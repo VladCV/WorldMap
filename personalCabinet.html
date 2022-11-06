@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/global.min.css" />
+    <link rel="stylesheet" href="css/personalCabinet.min.css" />
+    <title>Document</title>
+  </head>
+  <body id="body" data-page="personalCabinet">
+    <header class="header" id="header">
+  <div class="page-container">
+    <div class="header-container">
+      <div class="header-logo">
+        <a href="index.html">
+          <img src="img/Explore Logo3.svg" alt="logo" />
+        </a>
+      </div>
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <li class="nav-list-point">
+            <a href="index.html" class="list-point-link active"></a>
+          </li>
+          <li class="nav-list-point">
+            <a href="#" class="list-point-link"></a>
+          </li>
+          <li class="nav-list-point">
+            <a href="#" class="list-point-link"></a>
+          </li>
+        </ul>
+      </nav>
+      <div class="header-buttons">
+        <div class="button-container" id="button-language">
+          <img src="img/Иконка языка.svg" alt="icon" class="button-icon" />
+          <span class="header-button" data-type="language"> Українська </span>
+          <div class="button-dropdown-content">
+            <span>Русский</span>
+            <span>Украинский</span>
+          </div>
+        </div>
+        <div class="button-container" id="button-signIn">
+          <img
+            src="img/Иконка авторизации.svg"
+            alt="icon"
+            class="button-icon"
+          />
+          <button class="header-button" data-type="signIn"></button>
+        </div>
+        <div class="button-container" id="button-signOut">
+          <img
+            src="img/Иконка авторизации.svg"
+            alt="icon"
+            class="button-icon"
+          />
+          <button class="header-button" data-type="signOut"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+    <div class="page-container">
+      <div class="personal-cabinet-container" id="personalCabinet">
+        <div class="personal-cabinet-title-container">
+          <span class="personal-cabinet-title"></span>
+        </div>
+        <div class="personal-cabinet-content">
+          <div class="personal-cabinet-person">
+            <img src="" alt="" class="personal-cabinet-photo" />
+            <div class="personal-cabinet-name-and-buttons">
+              <div class="personal-cabinet-name"></div>
+              <div class="personal-cabinet-buttons">
+                <div class="personal-cabinet-button active"></div>
+                <div
+                  class="personal-cabinet-button active"
+                  id="continueReg"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="personal-cabinet-information active" data-mode="1">
+            <p class="personal-cabinet-point active"></p>
+            <p class="personal-cabinet-point"></p>
+            <p class="personal-cabinet-point"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup-container" id="popupContinueReg">
+  <div class="popup-bg" id="popupContinueRegBg">
+    <div class="popup-content active" data-stage="1">
+      <div class="popup-close"></div>
+      <div class="popup-header">
+        <span class="popup-header-title"></span>
+      </div>
+      <div class="popup-body">
+        <p class="popup-body-title"></p>
+        <div class="popup-body-container">
+          <div class="popup-body-buttons-row">
+            <div class="popup-body-button" data-mode="student">
+              <img src="img/student-icon.svg" alt="" />
+              <p></p>
+            </div>
+            <div class="popup-body-button" data-mode="teacher">
+              <img src="img/teacher-icon.svg" alt="" />
+              <p></p>
+            </div>
+          </div>
+          <div class="popup-body-button disactive" data-mode="team">
+            <img src="img/team-icon.svg" alt="" />
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popup-content" data-stage="2">
+      <div class="popup-back">&#129120;</div>
+      <div class="popup-close"></div>
+      <div class="popup-header">
+        <span class="popup-header-title"></span>
+      </div>
+      <div class="popup-body">
+        <p class="popup-body-title"></p>
+        <div class="popup-body-container">
+          <ul class="popup-body-list">
+            <li class="popup-body-list-point">
+              <p class="popup-body-list-point-title"></p>
+              <input type="text" class="popup-body-list-point-input" />
+            </li>
+            <li class="popup-body-list-point">
+              <p class="popup-body-list-point-title"></p>
+              <input
+                type="text"
+                class="popup-body-list-point-input input-datalist"
+                data-list="studentCountries"
+                list="input-countries"
+              />
+            </li>
+            <li class="popup-body-list-point">
+              <p class="popup-body-list-point-title"></p>
+              <input
+                type="text"
+                data-list="studentRegions"
+                class="popup-body-list-point-input input-datalist"
+              />
+            </li>
+            <li class="popup-body-list-point">
+              <p class="popup-body-list-point-title"></p>
+              <input
+                type="text"
+                data-list="studentSchools"
+                class="popup-body-list-point-input input-datalist"
+              />
+            </li>
+            <li class="popup-body-list-point">
+              <p class="popup-body-list-point-title"></p>
+              <input
+                type="text"
+                data-list="studentClass"
+                class="popup-body-list-point-input input-datalist"
+              />
+            </li>
+          </ul>
+          <div class="popup-body-container-button"></div>
+        </div>
+      </div>
+    </div>
+    <div class="popup-content" data-stage="3">
+      <div class="popup-back">&#129120;</div>
+      <div class="popup-close"></div>
+      <div class="popup-header">
+        <span class="popup-header-title"></span>
+      </div>
+      <div class="popup-body">
+        <p class="popup-body-title"></p>
+        <div class="popup-body-container">
+          <ul class="popup-body-list">
+            <li class="popup-body-list-point">
+              <p class="popup-body-list-point-title"></p>
+              <input type="text" class="popup-body-list-point-input" />
+            </li>
+            <li class="popup-body-list-point">
+              <p class="popup-body-list-point-title"></p>
+              <input type="text" class="popup-body-list-point-input" />
+            </li>
+            <li class="popup-body-list-point">
+              <p class="popup-body-list-point-title"></p>
+              <input type="text" class="popup-body-list-point-input" />
+            </li>
+            <li class="popup-body-list-point">
+              <p class="popup-body-list-point-title"></p>
+              <input type="text" class="popup-body-list-point-input" />
+            </li>
+            <li class="popup-body-list-point">
+              <p class="popup-body-list-point-title"></p>
+              <input type="text" class="popup-body-list-point-input" />
+            </li>
+          </ul>
+          <div class="popup-body-container-button"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<datalist id="input-countries" data-list="countries">
+  <option value="1154523"></option>
+  <option value="12433213"></option>
+  <option value="3243133"></option>
+  <option value="4153423"></option>
+  <option value="52231321"></option>
+  <option value="64213"></option>
+</datalist>
+ <footer class="footer" id="footer">
+  <div class="page-container">
+    <div class="footer-container">
+      <div class="footer-columns">
+        <a href="index.html" class="footer-logo">
+          <img src="img/Explore Logo3.svg" alt="logo" />
+        </a>
+      </div>
+      <div class="footer-columns">
+        <p class="footer-column-caption"></p>
+        <ul class="footer-list">
+          <li class="footer-list-point"></li>
+          <li class="footer-list-point"></li>
+          <li class="footer-list-point"></li>
+        </ul>
+      </div>
+      <div class="footer-columns">
+        <p class="footer-column-caption"></p>
+        <ul class="footer-list">
+          <li class="footer-list-point"></li>
+          <li class="footer-list-point"></li>
+        </ul>
+      </div>
+      <div class="footer-columns">
+        <p class="footer-column-caption"></p>
+        <ul class="footer-list">
+          <li class="footer-list-point"></li>
+        </ul>
+      </div>
+      <div class="footer-columns">
+        <p class="footer-column-text"></p>
+        <p class="footer-column-text"></p>
+        <button class="footer-button" onclick="feedback();"></button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import {
+      getDatabase,
+      ref,
+      set,
+      get,
+      child,
+      update,
+      remove,
+    } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCd1ey19rgxuiGoe3s1fgwAXBor2u6ZQ6c",
+      authDomain: "worldmap-51cd6.firebaseapp.com",
+      databaseURL: "https://worldmap-51cd6-default-rtdb.firebaseio.com",
+      projectId: "worldmap-51cd6",
+      storageBucket: "worldmap-51cd6.appspot.com",
+      messagingSenderId: "664182946054",
+      appId: "1:664182946054:web:3b8d35159dc28c2a3c0687",
+      measurementId: "G-H7YYLT7DW9",
+    };
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase();
+    const databaseRef = ref(database);
+
+    const refToRegistrationInformation =
+      languageCode + "/СountriesRegionsSchoolsAndSubjects";
+    get(child(databaseRef, refToRegistrationInformation))
+      .then((snapshot) => {
+        console.log(Object.keys(snapshot.val()));
+      })
+      .catch((error) => {
+        alert(
+          "Something was wrong with connecting to database. Please, reload the page (F5)"
+        );
+      });
+  </script>
+
+  <script src="js/global.js"></script>
+  <script src="js/globalDictionary.js"></script>
+  <script src="js/dictionaryForPersonalCabinet.js"></script>
+  <script src="js/personalCabinet.js"></script>
+</html>

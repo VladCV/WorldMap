@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #mapContainer {
+        height: 100vh;
+        width: 100%;
+        display: block;
+      }
+      .object {
+        margin: auto;
+        height: 35vh;
+        width: 300px;
+        background-color: red;
+        position: absolute;
+        /* top: 50%;
+        left: 50%; */
+      }
+      .visible-area {
+        position: absolute;
+        top: 65%;
+        left: 55%;
+        margin: auto;
+        height: 15vh;
+        width: 150px;
+        display: block;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mapContainer">
+      <div class="object" id="mapAll"></div>
+      <div class="visible-area" id="mapVisible"></div>
+    </div>
+  </body>
+
+  <script>
+    document.onmousemove = handleMouseMove;
+
+    let first = true;
+
+    let mousePos;
+    const map = document.getElementById("mapVisible");
+    const fullMap = document.getElementById("mapAll");
+    let startX = 0;
+    let startY = 0;
+    let finishX = 0;
+    let finishY = 0;
+
+    const windowHeight = window.screen.height / 2;
+    const windowWidth = window.screen.width / 2;
+
+    fullMap.setAttribute(
+      "style",
+      "top:" + windowHeight + "px; left:" + windowWidth + "px"
+    );
+    // top = window.screen.height / 2;
+    // fullMap.style.left = window.screen.width / 2;
+
+    function handleMouseMove(event) {
+      var dot, eventDoc, doc, body, pageX, pageY;
+
+      event = event || window.event;
+
+      if (event.pageX == null && event.clientX != null) {
+        eventDoc = (event.target && event.target.ownerDocument) || document;
+        doc = eventDoc.documentElement;
+        body = eventDoc.body;
+
+        event.pageX =
+          event.clientX +
+          ((doc && doc.scrollLeft) || (body && body.scrollLeft) || 0) -
+          ((doc && doc.clientLeft) || (body && body.clientLeft) || 0);
+        event.pageY =
+          event.clientY +
+          ((doc && doc.scrollTop) || (body && body.scrollTop) || 0) -
+          ((doc && doc.clientTop) || (body && body.clientTop) || 0);
+      }
+
+      mousePos = {
+        x: event.pageX,
+        y: event.pageY,
+      };
+    }
+
+    function mapZoom() {
+      differenceX = mousePos.x - startX;
+      differenceY = mousePos.y - startY;
+
+      console.log(map.getBoundingClientRect().left);
+
+      if (
+        (fullMap.getBoundingClientRect().left >=
+          map.getBoundingClientRect().left &&
+          differenceX > 0) ||
+        (fullMap.getBoundingClientRect().right <=
+          map.getBoundingClientRect().right &&
+          differenceX < 0) ||
+        (fullMap.getBoundingClientRect().top >=
+          map.getBoundingClientRect().top &&
+          differenceY > 0) ||
+        (fullMap.getBoundingClientRect().bottom <=
+          map.getBoundingClientRect().bottom &&
+          differenceY < 0)
+      ) {
+        //
+      } else {
+        if (first) {
+          fullMap.style.left = windowWidth + differenceX + "px";
+          fullMap.style.top = windowHeight + differenceY + "px";
+        } else {
+          fullMap.style.left = parseInt(finishX) + differenceX + "px";
+          fullMap.style.top = parseInt(finishY) + differenceY + "px";
+        }
+      }
+
+      // if (first) {
+      //   fullMap.style.left = windowWidth + differenceX + "px";
+      //   fullMap.style.top = windowHeight + differenceY + "px";
+      // } else {
+      //   fullMap.style.left = parseInt(finishX) + differenceX + "px";
+      //   fullMap.style.top = parseInt(finishY) + differenceY + "px";
+      // }
+    }
+
+    map.addEventListener("mousedown", function (e) {
+      startX = e.x;
+      startY = e.y;
+      console.log("startMove = " + startX + ", " + startY);
+      map.addEventListener("mousemove", mapZoom);
+    });
+    map.addEventListener("mouseup", function () {
+      finishX = document.getElementById("mapAll").style.left;
+      finishY = document.getElementById("mapAll").style.top;
+      first = false;
+      map.removeEventListener("mousemove", mapZoom);
+    });
+  </script>
+</html>
