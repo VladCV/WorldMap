@@ -31,7 +31,7 @@
         </ul>
       </nav>
       <div class="header-buttons">
-        <div class="button-container" id="button-language">
+        <div class="button-container active" id="button-language">
           <img src="img/Иконка языка.svg" alt="icon" class="button-icon" />
           <span class="header-button" data-type="language"> Українська </span>
           <div class="button-dropdown-content">
@@ -39,7 +39,7 @@
             <span>Украинский</span>
           </div>
         </div>
-        <div class="button-container" id="button-signIn">
+        <div class="button-container active" id="buttonSignIn">
           <img
             src="img/Иконка авторизации.svg"
             alt="icon"
@@ -47,7 +47,15 @@
           />
           <button class="header-button" data-type="signIn"></button>
         </div>
-        <div class="button-container" id="button-signOut">
+        <div class="button-container" id="buttonCabinet">
+          <img
+            src="img/Иконка авторизации.svg"
+            alt="icon"
+            class="button-icon"
+          />
+          <button class="header-button" data-type="cabinet"></button>
+        </div>
+        <div class="button-container" id="buttonSignOut">
           <img
             src="img/Иконка авторизации.svg"
             alt="icon"
@@ -73,10 +81,7 @@
               <div class="personal-cabinet-name"></div>
               <div class="personal-cabinet-buttons">
                 <div class="personal-cabinet-button active"></div>
-                <div
-                  class="personal-cabinet-button active"
-                  id="continueReg"
-                ></div>
+                <div class="personal-cabinet-button active" id="continueReg"></div>
               </div>
             </div>
           </div>
@@ -255,16 +260,9 @@
   </body>
 
   <script type="module">
+    import { getAuth, signInWithPopup, signInWithRedirect, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-    import {
-      getDatabase,
-      ref,
-      set,
-      get,
-      child,
-      update,
-      remove,
-    } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+    import { getDatabase, ref, set, get, child, update, remove } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCd1ey19rgxuiGoe3s1fgwAXBor2u6ZQ6c",
@@ -279,18 +277,84 @@
     const app = initializeApp(firebaseConfig);
     const database = getDatabase();
     const databaseRef = ref(database);
+    const provider = new GoogleAuthProvider(app);
+    const auth = getAuth(app);
 
-    const refToRegistrationInformation =
-      languageCode + "/СountriesRegionsSchoolsAndSubjects";
+    const refToRegistrationInformation = languageCode + "/СountriesRegionsSchoolsAndSubjects";
     get(child(databaseRef, refToRegistrationInformation))
       .then((snapshot) => {
         console.log(Object.keys(snapshot.val()));
       })
       .catch((error) => {
-        alert(
-          "Something was wrong with connecting to database. Please, reload the page (F5)"
-        );
+        alert("Something was wrong with connecting to database. Please, reload the page (F5)");
       });
+
+    if (sessionStorage.getItem("user")) {
+      document.querySelector(".button-container#buttonSignIn").classList = "button-container";
+      document.querySelector(".button-container#buttonSignOut").classList = "button-container active";
+      //document.querySelector(".button-container#buttonCabinet").classList = "button-container active";
+    } else {
+      document.location.href = "index.html";
+    }
+
+    document.getElementById("buttonSignIn").addEventListener("click", () => {
+      signInWithPopup(auth, provider).then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        const userID = user.uid;
+        const refToListWithUsers = "users/informationAboutUsers/" + userID;
+        get(child(databaseRef, refToListWithUsers))
+          .then((snapshot) => {
+            continueRegistration(snapshot.val());
+          })
+          .catch((error) => {
+            console.log("error = " + error);
+          });
+        function continueRegistration(snap) {
+          let informationAboutUser = "";
+          if (snap) {
+            informationAboutUser = snap;
+          } else {
+            let userName = user.displayName;
+            let userEmail = user.email;
+            let userPhoto = user.reloadUserInfo.photoUrl;
+            let userDate = user.metadata.createdAt;
+            set(child(databaseRef, "users/informationAboutUsers/" + userID), {
+              userId: userID,
+              userName: userName,
+              userEmail: userEmail,
+              userPhoto: userPhoto,
+              userDateOfRegister: userDate,
+            });
+            informationAboutUser = {
+              userId: userID,
+              userName: userName,
+              userEmail: userEmail,
+              userPhoto: userPhoto,
+              userDateOfRegister: userDate,
+            };
+          }
+          sessionStorage.setItem("user", JSON.stringify(informationAboutUser));
+          document.querySelector(".button-container#buttonSignIn").classList = "button-container";
+          document.querySelector(".button-container#buttonSignOut").classList = "button-container active";
+          //document.querySelector(".button-container#buttonCabinet").classList = "button-container active";
+        }
+      });
+      //}
+    });
+
+    document.getElementById("buttonSignOut").addEventListener("click", () => {
+      document.querySelector(".button-container#buttonSignIn").classList = "button-container active";
+      document.querySelector(".button-container#buttonSignOut").classList = "button-container";
+      document.querySelector(".button-container#buttonCabinet").classList = "button-container";
+      sessionStorage.removeItem("user");
+      document.location.href = "index.html"
+    });
+
+    document.getElementById("buttonCabinet").addEventListener("click", () => {
+      document.location.href = "personalCabinet.html";
+    });
   </script>
 
   <script src="js/global.js"></script>

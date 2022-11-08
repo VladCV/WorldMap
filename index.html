@@ -31,7 +31,7 @@
         </ul>
       </nav>
       <div class="header-buttons">
-        <div class="button-container" id="button-language">
+        <div class="button-container active" id="button-language">
           <img src="img/Иконка языка.svg" alt="icon" class="button-icon" />
           <span class="header-button" data-type="language"> Українська </span>
           <div class="button-dropdown-content">
@@ -39,7 +39,7 @@
             <span>Украинский</span>
           </div>
         </div>
-        <div class="button-container" id="button-signIn">
+        <div class="button-container active" id="buttonSignIn">
           <img
             src="img/Иконка авторизации.svg"
             alt="icon"
@@ -47,7 +47,15 @@
           />
           <button class="header-button" data-type="signIn"></button>
         </div>
-        <div class="button-container" id="button-signOut">
+        <div class="button-container" id="buttonCabinet">
+          <img
+            src="img/Иконка авторизации.svg"
+            alt="icon"
+            class="button-icon"
+          />
+          <button class="header-button" data-type="cabinet"></button>
+        </div>
+        <div class="button-container" id="buttonSignOut">
           <img
             src="img/Иконка авторизации.svg"
             alt="icon"
@@ -239,61 +247,68 @@
     const provider = new GoogleAuthProvider(app);
     const auth = getAuth(app);
 
-    document.getElementById("button-signIn").addEventListener("click", () => {
-      console.log("wdawdwa");
-      if (!sessionStorage.getItem("user")) {
-        console.log(sessionStorage.getItem("user"));
-        //document.location.href = "personalCabinet.html";
-      } else {
-        signInWithPopup(auth, provider).then((result) => {
-          const credential = GoogleAuthProvider.credentialFromResult(result);
-          const token = credential.accessToken;
-          const user = result.user;
-          const userID = user.uid;
+    if (sessionStorage.getItem("user")) {
+      document.querySelector(".button-container#buttonSignIn").classList = "button-container";
+      document.querySelector(".button-container#buttonSignOut").classList = "button-container active";
+      document.querySelector(".button-container#buttonCabinet").classList = "button-container active";
+    }
 
-          const refToListWithUsers = "users/informationAboutUsers/" + userID;
-          get(child(databaseRef, refToListWithUsers))
-            .then((snapshot) => {
-              continueRegistration(snapshot.val());
-            })
-            .catch((error) => {
-              console.log("error = " + error);
+    document.getElementById("buttonSignIn").addEventListener("click", () => {
+      signInWithPopup(auth, provider).then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        const userID = user.uid;
+        const refToListWithUsers = "users/informationAboutUsers/" + userID;
+        get(child(databaseRef, refToListWithUsers))
+          .then((snapshot) => {
+            continueRegistration(snapshot.val());
+          })
+          .catch((error) => {
+            console.log("error = " + error);
+          });
+        function continueRegistration(snap) {
+          let informationAboutUser = "";
+          if (snap) {
+            informationAboutUser = snap;
+          } else {
+            let userName = user.displayName;
+            let userEmail = user.email;
+            let userPhoto = user.reloadUserInfo.photoUrl;
+            let userDate = user.metadata.createdAt;
+            set(child(databaseRef, "users/informationAboutUsers/" + userID), {
+              userId: userID,
+              userName: userName,
+              userEmail: userEmail,
+              userPhoto: userPhoto,
+              userDateOfRegister: userDate,
             });
-
-          function continueRegistration(snap) {
-            let informationAboutUser = ''
-            if (snap) {
-              informationAboutUser = snap;
-              console.log(informationAboutUser)
-              console.log("user is in BD");
-            } else {
-              let userName = user.displayName;
-              let userEmail = user.email;
-              let userPhoto = user.reloadUserInfo.photoUrl;
-              //let userDate = user.metadata.
-              console.log(user)
-              set(child(databaseRef, "users/informationAboutUsers/" + userID), {
-                userId: userID,
-                userName: userName,
-                userEmail: userEmail,
-                userPhoto: userPhoto
-                //userDateOfRegister: userDate
-              });
-              informationAboutUser = {
-                userId: userID,
-                userName: userName,
-                userEmail: userEmail,
-                userPhoto: userPhoto
-                //userDateOfRegister: userDate
-              };
-              console.log("user is absent in BD");
-              console.log(informationAboutUser);
-            }
-            sessionStorage.setItem("user", JSON.stringify(informationAboutUser));
-            //document.location.href = "personalCabinet.html";
+            informationAboutUser = {
+              userId: userID,
+              userName: userName,
+              userEmail: userEmail,
+              userPhoto: userPhoto,
+              userDateOfRegister: userDate,
+            };
           }
-        });
-      }
+          sessionStorage.setItem("user", JSON.stringify(informationAboutUser));
+          document.querySelector(".button-container#buttonSignIn").classList = "button-container";
+          document.querySelector(".button-container#buttonSignOut").classList = "button-container active";
+          document.querySelector(".button-container#buttonCabinet").classList = "button-container active";
+        }
+      });
+      //}
+    });
+
+    document.getElementById("buttonSignOut").addEventListener("click", () => {
+      document.getElementById("buttonSignIn").setAttribute("display", "flex");
+      document.getElementById("buttonSignOut").setAttribute("display", "none");
+      document.getElementById("buttonCabinet").setAttribute("display", "none");
+      sessionStorage.removeItem("user");
+    });
+
+    document.getElementById("buttonCabinet").addEventListener("click", () => {
+      document.location.href = "personalCabinet.html";
     });
   </script>
 </html>
