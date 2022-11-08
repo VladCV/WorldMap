@@ -270,7 +270,7 @@
               let userName = user.displayName;
               let userEmail = user.email;
               let userPhoto = user.reloadUserInfo.photoUrl;
-              //let userDate = user.
+              //let userDate = user.metadata.
               console.log(user)
               set(child(databaseRef, "users/informationAboutUsers/" + userID), {
                 userId: userID,
@@ -283,7 +283,8 @@
                 userId: userID,
                 userName: userName,
                 userEmail: userEmail,
-                userPhoto: userPhoto,
+                userPhoto: userPhoto
+                //userDateOfRegister: userDate
               };
               console.log("user is absent in BD");
               console.log(informationAboutUser);
