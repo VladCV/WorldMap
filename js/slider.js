@@ -63,13 +63,13 @@ document.getElementById("slider").querySelectorAll(".slide .slide-button").forEa
         localStorage.setItem('mode', slideButton.dataset.mode)
         localStorage.setItem('modeId', slideButton.dataset.modeid)
         if (slideButton.dataset.modeid == 0) {
-            document.location.href = "../map.html?modeid=0";
+            document.location.href = "map.html?modeid=0";
         } else if (slideButton.dataset.modeid == 1) {
-            document.location.href = "../map.html?modeid=1";
+            document.location.href = "map.html?modeid=1";
         } else if (slideButton.dataset.modeid == 2) {
-            document.location.href = "../map.html?modeid=2";
+            document.location.href = "map.html?modeid=2";
         } else if (slideButton.dataset.modeid == 3) {
-            document.location.href = "../map.html?modeid=3";
+            document.location.href = "map.html?modeid=3";
         }
     })
 })

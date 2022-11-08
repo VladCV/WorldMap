@@ -83,6 +83,7 @@ document.querySelectorAll(".left-menu-test-button").forEach((e) => {
         if (document.querySelector("#popupTestsInMap .popup-content[data-test=" + e.dataset.test + "]")) {
             document.getElementById("popupTestsInMap").classList = "popup-container active";
             document.querySelector("#popupTestsInMap .popup-content[data-test=" + e.dataset.test + "]").classList += " active";
+            document.querySelector("#popupTestsInMap .popup-content[data-test=" + e.dataset.test + "] .popup-body[data-teststage='1']").classList += " active"
             document.getElementById("body").classList += "popup-active";
         }
 

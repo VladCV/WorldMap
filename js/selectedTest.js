@@ -1363,7 +1363,7 @@ function firstGeographyTest() {
     wayToPopups.classList += " active";
     // finishedBeforeEnd = false;
     finishTest();
-  }, timeInTest * 6000);
+  }, timeInTest * 60000);
 
   wayToActivatedTest.childNodes[5].addEventListener("click", function () {
     wayToPopups.classList += " active";
