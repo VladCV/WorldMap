@@ -184,6 +184,10 @@
   margin-top: 36px;
   -webkit-box-shadow: 0 10px 70px rgba(255, 255, 255, 0.5);
           box-shadow: 0 10px 70px rgba(255, 255, 255, 0.5);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .slider-container .flex-container .slider-wrapper .slide .slide-content .slide-button:hover {
