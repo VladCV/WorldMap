@@ -1373,13 +1373,6 @@ function firstGeographyTest() {
   function finishTest() {
     regionInTest = dictionaryForContinents[regionInTest][languageId];
 
-
-
-    console.log("questions: " + questions);
-    console.log("region: " + regionInTest);
-    console.log("correctedAnswers: " + wayToActivatedTest.childNodes[3].childNodes[1].innerText);
-    console.log("time: " + time);
-
     sessionStorage.setItem("stageOfTest", "finished")
     sessionStorage.setItem("numberOfTest", numberOfTest);
     sessionStorage.setItem("region", regionInTest);
@@ -1387,14 +1380,14 @@ function firstGeographyTest() {
     sessionStorage.setItem("correctedAnswers", wayToActivatedTest.childNodes[3].childNodes[1].innerText);
     sessionStorage.setItem("time", time);
 
-    document.location.href = "map.html"
+    //document.location.href = "map.html"
   }
+
 }
 
 function secondGeographyTest() {}
 
 function thirdGeographyTest() {}
-
 
 function timerInTest() {
   let sec = 0;

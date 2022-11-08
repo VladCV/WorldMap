@@ -3,7 +3,8 @@ const libraryForTheHeader = [
     ["Про платформу"],
     ["Контакти"],
     ["Авторизація"],
-    ["Вийти"]
+    ["Особистий кабінет"],
+    ["Вийти"],
 ]
 
 const libraryForTheFooter = [
@@ -33,7 +34,8 @@ document.querySelector('.header').querySelectorAll(".list-point-link").forEach((
     e.innerText = libraryForTheHeader[i][languageId]
 })
 
-document.querySelector('.header').querySelector('[data-type="signIn"]').innerText = libraryForTheHeader[libraryForTheHeader.length - 2][languageId]
+document.querySelector('.header').querySelector('[data-type="signIn"]').innerText = libraryForTheHeader[libraryForTheHeader.length - 3][languageId]
+document.querySelector('.header').querySelector('[data-type="cabinet"]').innerText = libraryForTheHeader[libraryForTheHeader.length - 2][languageId]
 document.querySelector('.header').querySelector('[data-type="signOut"]').innerText = libraryForTheHeader[libraryForTheHeader.length - 1][languageId]
 
 document.querySelector('.footer').querySelectorAll('.footer-column-caption').forEach((e, i = 0) => {

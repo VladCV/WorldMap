@@ -8,14 +8,6 @@ function toIndex() {
 
 body = document.getElementById('body')
 
-if(document.getElementById("button-signOut")) {
-    document.getElementById("button-signOut").addEventListener("click", () => {
-        sessionStorage.removeItem("user");
-        document.location.href = "index.html";
-    });
-}
-
-
 if (body.dataset.page != "index" && body.dataset.page != "selectedTest") {
     document.querySelector('.header').classList += ' bg'
     document.querySelectorAll('.list-point-link').forEach((e) => {

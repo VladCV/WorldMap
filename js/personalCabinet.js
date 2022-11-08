@@ -8,8 +8,8 @@ const popupDatalistCountries = document.getElementById("input-countries")
 wayToPersonalCabinet.querySelector(".personal-cabinet-photo").src = informationAboutThePerson["photoURL"];
 wayToPersonalCabinet.querySelector(".personal-cabinet-name").innerText = informationAboutThePerson["displayName"];
 
-document.getElementById("button-signOut").setAttribute("style", "display:flex");
-document.getElementById("button-signIn").setAttribute("style", "display:none");
+document.getElementById("buttonSignOut").setAttribute("style", "display:flex");
+document.getElementById("buttonSignIn").setAttribute("style", "display:none");
 
 document.getElementById("continueReg").addEventListener("click", () => {
     document.getElementById("popupContinueReg").classList += " active";

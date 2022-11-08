@@ -60,7 +60,7 @@ pCabinetPopUp.querySelector(".popup-content[data-stage='1'] .popup-body-title").
 let cb = 2
 pCabinetPopUp.querySelectorAll(".popup-content[data-stage='1'] .popup-body-button p").forEach((e) => {
     e.innerText = dictionaryForPersonalCabinetPopUp1[cb][languageId]
-    k++;
+    cb++;
 })
 
 pCabinetPopUp.querySelector(".popup-content[data-stage='2'] .popup-body-container-button").innerText = dictionaryForPersonalCabinet[2][languageId]

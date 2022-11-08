@@ -1248,11 +1248,6 @@ if (sessionStorage.getItem("stageOfTest") == "finished") {
       break;
   }
 }
-//  else {
-//   document.getElementById("popupTestsInMap").className = "popup-container active";
-//   popupTestGeography1.className = "popup-content active";
-//   popupTestGeography1.querySelector(".popup-body[data-testStage='1']").className = "popup-body active";
-// }
 
 popupTestGeography1.querySelector(".popup-body[data-testStage='1'] .popup-body-button").addEventListener("click", function () {
   popupTestGeographyInfo0 = "1";
