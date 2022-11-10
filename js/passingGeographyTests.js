@@ -1250,12 +1250,13 @@ if (sessionStorage.getItem("stageOfTest") == "finished") {
 }
 
 popupTestGeography1.querySelector(".popup-body[data-testStage='1'] .popup-body-button").addEventListener("click", function () {
-  popupTestGeographyInfo0 = "1";
-  popupTestGeographyInfo1 = popupTestGeography1.querySelector(".popup-body-list-point-input[name='selectRegionOfTheWorld']").value;
-  popupTestGeographyInfo2 = popupTestGeography1.querySelector(".popup-body-list-point-input[name='selectKnowledge']").value;
-  popupTestGeographyInfo3 = popupTestGeography1.querySelector(".popup-body-list-point-input[name='inputNumberQuestions']").value;
-  popupTestGeographyInfo4 = popupTestGeography1.querySelector(".popup-body-list-point-input[name='inputTimeForTest']").value;
-  document.location = `selectedTest.html?test=${popupTestGeographyInfo0}&r=${popupTestGeographyInfo1}&k=${popupTestGeographyInfo2}&c=${popupTestGeographyInfo3}&t=${popupTestGeographyInfo4}`;
+  popupTestGeographyInfo0 = "geography";
+  popupTestGeographyInfo1 = "1";
+  popupTestGeographyInfo2 = popupTestGeography1.querySelector(".popup-body-list-point-input[name='selectRegionOfTheWorld']").value;
+  popupTestGeographyInfo3 = popupTestGeography1.querySelector(".popup-body-list-point-input[name='selectKnowledge']").value;
+  popupTestGeographyInfo4 = popupTestGeography1.querySelector(".popup-body-list-point-input[name='inputNumberQuestions']").value;
+  popupTestGeographyInfo5 = popupTestGeography1.querySelector(".popup-body-list-point-input[name='inputTimeForTest']").value;
+  document.location = `selectedTest.html?subject=${popupTestGeographyInfo0}&test=${popupTestGeographyInfo1}&r=${popupTestGeographyInfo2}&k=${popupTestGeographyInfo3}&c=${popupTestGeographyInfo4}&t=${popupTestGeographyInfo5}`;
 });
 
 function finishGeographyTest1() {
@@ -1272,6 +1273,8 @@ function finishGeographyTest1() {
     sessionStorage.getItem("correctedAnswers");
   popupTestGeography1.querySelector(".popup-body[data-testStage='4'] .popup-body-list-point-input[data-input='spendTime'] .popup-body-list-point-input-information").innerText =
     sessionStorage.getItem("time");
+  
+  // Download information in BD write in "map.html"
 }
 
 popupTestGeography1.querySelector(".popup-body[data-testStage='4'] .popup-body-button").addEventListener("click", function () {

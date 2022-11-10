@@ -1245,6 +1245,7 @@ let time = '';
 
 const wayToPopups = document.getElementById("popupTestsInSelectedTest");
 
+const subjectOfTest = paramsInSelectedTest.get("subject")
 const numberOfTest = paramsInSelectedTest.get("test");
 
 function getRandomArbitrary(min, max) {
@@ -1374,13 +1375,19 @@ function firstGeographyTest() {
     regionInTest = dictionaryForContinents[regionInTest][languageId];
 
     sessionStorage.setItem("stageOfTest", "finished")
+    if(sessionStorage.getItem("user")) {
+      sessionStorage.setItem("downloadInformationInBD", true)
+    }
+
+    sessionStorage.setItem("questions", JSON.stringify(questions))
+    sessionStorage.setItem("subjectOfTest", subjectOfTest)
     sessionStorage.setItem("numberOfTest", numberOfTest);
     sessionStorage.setItem("region", regionInTest);
     sessionStorage.setItem("numberOfQuestions", countOfQuestionsInTest);
     sessionStorage.setItem("correctedAnswers", wayToActivatedTest.childNodes[3].childNodes[1].innerText);
     sessionStorage.setItem("time", time);
 
-    //document.location.href = "map.html"
+    document.location.href = "map.html"
   }
 
 }
