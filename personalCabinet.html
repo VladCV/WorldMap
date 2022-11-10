@@ -69,7 +69,7 @@
 </header>
 
 
-    <div class="page-container">
+    <div class="page-container min-width">
       <div class="personal-cabinet-container" id="personalCabinet">
         <div class="personal-cabinet-title-container">
           <span class="personal-cabinet-title"></span>
@@ -86,12 +86,25 @@
             </div>
           </div>
           <div class="personal-cabinet-information active" data-mode="1">
-            <p class="personal-cabinet-point active"></p>
+            <p class="personal-cabinet-point"></p>
             <p class="personal-cabinet-point"></p>
             <p class="personal-cabinet-point"></p>
           </div>
+          <div class="personal-cabinet-list-with-tests">
+            <p class="list-with-tests-title"></p>
+            <div class="list-with-tests-container">
+              <div class="list-with-tests-sorts"></div>
+              <div class="list-with-tests-tests">
+                <div class="test-container">
+  
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+
     </div>
 
     <div class="popup-container" id="popupContinueReg">
@@ -259,6 +272,9 @@
 
   </body>
 
+  <script src="js/global.js"></script>
+  <script src="js/globalDictionary.js"></script>
+
   <script type="module">
     import { getAuth, signInWithPopup, signInWithRedirect, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
@@ -281,68 +297,69 @@
     const auth = getAuth(app);
 
     const refToRegistrationInformation = languageCode + "/СountriesRegionsSchoolsAndSubjects";
-    get(child(databaseRef, refToRegistrationInformation))
-      .then((snapshot) => {
-        console.log(Object.keys(snapshot.val()));
-      })
-      .catch((error) => {
-        alert("Something was wrong with connecting to database. Please, reload the page (F5)");
-      });
+    // get(child(databaseRef, refToRegistrationInformation))
+    //   .then((snapshot) => {
+    //     // console.log(Object.keys(snapshot.val()));
+    //   })
+    //   .catch((error) => {
+    //     alert("Something was wrong with connecting to database. Please, reload the page (F5)");
+    //   });
 
     if (sessionStorage.getItem("user")) {
       document.querySelector(".button-container#buttonSignIn").classList = "button-container";
       document.querySelector(".button-container#buttonSignOut").classList = "button-container active";
       //document.querySelector(".button-container#buttonCabinet").classList = "button-container active";
     } else {
+      // Have to check userId in BD to be more protected
       document.location.href = "index.html";
     }
 
-    document.getElementById("buttonSignIn").addEventListener("click", () => {
-      signInWithPopup(auth, provider).then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        const user = result.user;
-        const userID = user.uid;
-        const refToListWithUsers = "users/informationAboutUsers/" + userID;
-        get(child(databaseRef, refToListWithUsers))
-          .then((snapshot) => {
-            continueRegistration(snapshot.val());
-          })
-          .catch((error) => {
-            console.log("error = " + error);
-          });
-        function continueRegistration(snap) {
-          let informationAboutUser = "";
-          if (snap) {
-            informationAboutUser = snap;
-          } else {
-            let userName = user.displayName;
-            let userEmail = user.email;
-            let userPhoto = user.reloadUserInfo.photoUrl;
-            let userDate = user.metadata.createdAt;
-            set(child(databaseRef, "users/informationAboutUsers/" + userID), {
-              userId: userID,
-              userName: userName,
-              userEmail: userEmail,
-              userPhoto: userPhoto,
-              userDateOfRegister: userDate,
-            });
-            informationAboutUser = {
-              userId: userID,
-              userName: userName,
-              userEmail: userEmail,
-              userPhoto: userPhoto,
-              userDateOfRegister: userDate,
-            };
-          }
-          sessionStorage.setItem("user", JSON.stringify(informationAboutUser));
-          document.querySelector(".button-container#buttonSignIn").classList = "button-container";
-          document.querySelector(".button-container#buttonSignOut").classList = "button-container active";
-          //document.querySelector(".button-container#buttonCabinet").classList = "button-container active";
-        }
-      });
-      //}
-    });
+    // document.getElementById("buttonSignIn").addEventListener("click", () => {
+    //   signInWithPopup(auth, provider).then((result) => {
+    //     const credential = GoogleAuthProvider.credentialFromResult(result);
+    //     const token = credential.accessToken;
+    //     const user = result.user;
+    //     const userID = user.uid;
+    //     const refToListWithUsers = "users/informationAboutUsers/" + userID;
+    //     get(child(databaseRef, refToListWithUsers))
+    //       .then((snapshot) => {
+    //         continueRegistration(snapshot.val());
+    //       })
+    //       .catch((error) => {
+    //         console.log("error = " + error);
+    //       });
+    //     function continueRegistration(snap) {
+    //       let informationAboutUser = "";
+    //       if (snap) {
+    //         informationAboutUser = snap;
+    //       } else {
+    //         let userName = user.displayName;
+    //         let userEmail = user.email;
+    //         let userPhoto = user.reloadUserInfo.photoUrl;
+    //         let userDate = user.metadata.createdAt;
+    //         set(child(databaseRef, "users/informationAboutUsers/" + userID), {
+    //           userId: userID,
+    //           userName: userName,
+    //           userEmail: userEmail,
+    //           userPhoto: userPhoto,
+    //           userDateOfRegister: userDate,
+    //         });
+    //         informationAboutUser = {
+    //           userId: userID,
+    //           userName: userName,
+    //           userEmail: userEmail,
+    //           userPhoto: userPhoto,
+    //           userDateOfRegister: userDate,
+    //         };
+    //       }
+    //       sessionStorage.setItem("user", JSON.stringify(informationAboutUser));
+    //       document.querySelector(".button-container#buttonSignIn").classList = "button-container";
+    //       document.querySelector(".button-container#buttonSignOut").classList = "button-container active";
+    //       //document.querySelector(".button-container#buttonCabinet").classList = "button-container active";
+    //     }
+    //   });
+    //   //}
+    // });
 
     document.getElementById("buttonSignOut").addEventListener("click", () => {
       document.querySelector(".button-container#buttonSignIn").classList = "button-container active";
@@ -352,13 +369,11 @@
       document.location.href = "index.html"
     });
 
-    document.getElementById("buttonCabinet").addEventListener("click", () => {
-      document.location.href = "personalCabinet.html";
-    });
+    // document.getElementById("buttonCabinet").addEventListener("click", () => {
+    //   document.location.href = "personalCabinet.html";
+    // });
   </script>
 
-  <script src="js/global.js"></script>
-  <script src="js/globalDictionary.js"></script>
   <script src="js/dictionaryForPersonalCabinet.js"></script>
   <script src="js/personalCabinet.js"></script>
 </html>

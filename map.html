@@ -478,7 +478,7 @@
     // }
     import { getAuth, signInWithPopup, signInWithRedirect, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-    import { getDatabase, ref, set, get, child, update, remove } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+    import { getDatabase, ref, set, get, child, update, remove, push } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCd1ey19rgxuiGoe3s1fgwAXBor2u6ZQ6c",
@@ -497,6 +497,7 @@
     const auth = getAuth(app);
 
     const countries = document.querySelectorAll(".country");
+
 
     const refToGeneralInformation = languageCode + "/CountryNamesCapitalNamesInternationalOrganizations";
     get(child(databaseRef, refToGeneralInformation))
@@ -524,6 +525,40 @@
       document.querySelector("#leftMenu2[data-mode='tests'] .left-menu-authorization[data-auth='true']").className = "left-menu-authorization active";
     } else {
       document.querySelector("#leftMenu2[data-mode='tests'] .left-menu-authorization[data-auth='false']").className = "left-menu-authorization active";
+    }
+
+    if (sessionStorage.getItem("downloadInformationInBD")){
+      const userId = JSON.parse(sessionStorage.getItem("user")).userId;
+      const d = new Date();
+
+      let questionsForBD = JSON.parse(sessionStorage.getItem("questions"));
+      let spendTimeForTest = sessionStorage.getItem("time");
+      let dateForBD = d.getTime();
+      let subjectOfTest = sessionStorage.getItem("subjectOfTest");
+      let numberOfTest = sessionStorage.getItem("numberOfTest");
+      let regionInTest = sessionStorage.getItem("region");
+      let correctedAnswersInTest = sessionStorage.getItem("correctedAnswers");
+
+      set(push(child(databaseRef, `users/historyOfTests/${userId}`)), {
+        informationAboutTest: {
+          date: dateForBD,
+          spendTime: spendTimeForTest,
+          subject: subjectOfTest,
+          test: numberOfTest,
+          region: regionInTest, 
+          numberOfAnswers: questionsForBD.length,
+          correctedAnswers: correctedAnswersInTest
+        },
+        listWithQuestions: questionsForBD,
+      })
+
+      sessionStorage.removeItem("downloadInformationInBD");
+      sessionStorage.removeItem("questions");
+      sessionStorage.removeItem("time");
+      sessionStorage.removeItem("subjectOfTest");
+      sessionStorage.removeItem("numberOfTest");
+      sessionStorage.removeItem("region");
+      sessionStorage.removeItem("correctedAnswers");
     }
 
     function authorizationInBD() {

@@ -301,9 +301,9 @@
     });
 
     document.getElementById("buttonSignOut").addEventListener("click", () => {
-      document.getElementById("buttonSignIn").setAttribute("display", "flex");
-      document.getElementById("buttonSignOut").setAttribute("display", "none");
-      document.getElementById("buttonCabinet").setAttribute("display", "none");
+      document.querySelector(".button-container#buttonSignIn").classList = "button-container active";
+      document.querySelector(".button-container#buttonSignOut").classList = "button-container";
+      document.querySelector(".button-container#buttonCabinet").classList = "button-container";
       sessionStorage.removeItem("user");
     });
 
