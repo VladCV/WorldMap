@@ -1,7 +1,7 @@
 const countries = document.querySelectorAll(".country");
 const leftMenu1 = document.querySelector("#leftMenu[data-mode='settings']");
 const leftMenu2 = document.querySelector("#leftMenu2[data-mode='tests']");
-const mapContainer = document.getElementById("map");
+const mapContainer = document.getElementById("mapCont");
 const switches = document.querySelectorAll(".left-menu-list--switch");
 const dropdown = document.getElementById("dropdown");
 
@@ -132,6 +132,8 @@ switches.forEach((swtch) => {
 //         dropdown.classList = "dropdown active"
 //     }
 // })
+
+console.log(mapContainer)
 
 leftMenu1.querySelector(".left-menu-button").addEventListener("click", () => {
   if (leftMenu1.classList == "left-menu-container active") {
