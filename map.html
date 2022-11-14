@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Explore the World</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/global.min.css" />
     <link rel="stylesheet" href="css/pageWithMap.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,14 +29,14 @@
       </div>
       <nav class="header-nav">
         <ul class="nav-list">
-          <li class="nav-list-point">
+          <li class="nav-list-point" id="main">
             <a href="index.html" class="list-point-link active"></a>
           </li>
-          <li class="nav-list-point">
-            <a href="#" class="list-point-link"></a>
+          <li class="nav-list-point" id="map">
+            <a href="map.html" class="list-point-link"></a>
           </li>
-          <li class="nav-list-point">
-            <a href="#" class="list-point-link"></a>
+          <li class="nav-list-point" id="aboutUs">
+            <a href="about_us.html" class="list-point-link"></a>
           </li>
         </ul>
       </nav>
@@ -308,7 +312,7 @@
               <span class="popup-body-list-point-text"></span>
             </p>
             <input
-              value="3"
+              value="12"
               type="number"
               name="inputNumberQuestions"
               class="popup-body-list-point-input"
@@ -424,32 +428,64 @@
       <div class="footer-columns">
         <p class="footer-column-caption"></p>
         <ul class="footer-list">
-          <li class="footer-list-point"></li>
-          <li class="footer-list-point"></li>
-          <li class="footer-list-point"></li>
+          <li class="footer-list-point">
+            <a href="" class="footer-list-point-link"></a>
+          </li>
+          <li class="footer-list-point">
+            <a href="" class="footer-list-point-link"></a>
+          </li>
+          <!-- <li class="footer-list-point"></li> -->
         </ul>
       </div>
       <div class="footer-columns">
         <p class="footer-column-caption"></p>
         <ul class="footer-list">
-          <li class="footer-list-point"></li>
-          <li class="footer-list-point"></li>
+          <li class="footer-list-point">
+            <a href="about_us.html" class="footer-list-point-link"></a>
+          </li>
+          <!-- <li class="footer-list-point"></li> -->
         </ul>
       </div>
       <div class="footer-columns">
         <p class="footer-column-caption"></p>
         <ul class="footer-list">
-          <li class="footer-list-point"></li>
+          <li class="footer-list-point"><a href="" class="footer-list-point-link"></a></li>
         </ul>
       </div>
       <div class="footer-columns">
         <p class="footer-column-text"></p>
         <p class="footer-column-text"></p>
-        <button class="footer-button" onclick="feedback();"></button>
+        <button class="footer-button" id="footerButtonForCallBack"></button>
       </div>
     </div>
   </div>
 </footer>
+
+<div class="popup-callback-container" id="popupCallBack">
+  <div class="popup-callback-bg" id="popupCallBackBg">
+    <div class="popup-callback-content active" data-stage="1">
+      <div class="popup-callback-close"></div>
+      <div class="popup-callback-header">
+        <span class="popup-callback-header-title"></span>
+      </div>
+      <div class="popup-callback-body">
+        <div class="popup-callback-body-container">
+          <div class="popup-callback-body-input-container">
+            <p class="popup-callback-body-input-text"></p>
+            <input type="text" class="popup-callback-body-input" />
+          </div>
+          <div class="popup-callback-body-input-container">
+            <p class="popup-callback-body-input-text"></p>
+            <textarea type="text" class="popup-callback-body-input textarea"></textarea>
+          </div>
+          <button class="popup-callback-body-button"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="popup-callback"></div>
 
   </body>
 
@@ -457,28 +493,11 @@
   <script src="js/globalDictionary.min.js"></script>
   <script src="js/dictionaryForGeographyTests.js"></script>
   <script type="module">
-    let getMode = location.search;
-    console.log(getMode);
+    header.querySelector(".nav-list-point#map .list-point-link").className = "list-point-link active"
 
-    var tmp = new Array(); // два вспомагательных
-    var tmp2 = new Array(); // массива
-    var param = new Array();
-
-    if (getMode != "") {
-      tmp = getMode.substr(1).split("&"); // разделяем переменные
-      for (var i = 0; i < tmp.length; i++) {
-        tmp2 = tmp[i].split("="); // массив param будет содержать
-        param[tmp2[0]] = tmp2[1]; // пары ключ(имя переменной)->значение
-      }
-      console.log(param);
-    }
-
-    // if ((param["modeid"] = 0)) {
-    //   import * as Geography from "./js/mapGeography.js";
-    // }
     import { getAuth, signInWithPopup, signInWithRedirect, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-    import { getDatabase, ref, set, get, child, update, remove, push } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+    import { getDatabase, ref, set, get, child, update, remove, push} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCd1ey19rgxuiGoe3s1fgwAXBor2u6ZQ6c",
@@ -502,7 +521,6 @@
     const refToGeneralInformation = languageCode + "/CountryNamesCapitalNamesInternationalOrganizations";
     get(child(databaseRef, refToGeneralInformation))
       .then((snapshot) => {
-        //var sum_countries = countries.length;
         setGlobalInformation(countries.length, snapshot);
       })
       .catch((error) => {
@@ -518,14 +536,7 @@
         //
       });
 
-    if (sessionStorage.getItem("user")) {
-      document.querySelector(".button-container#buttonSignIn").classList = "button-container";
-      document.querySelector(".button-container#buttonSignOut").classList = "button-container active";
-      document.querySelector(".button-container#buttonCabinet").classList = "button-container active";
-      document.querySelector("#leftMenu2[data-mode='tests'] .left-menu-authorization[data-auth='true']").className = "left-menu-authorization active";
-    } else {
-      document.querySelector("#leftMenu2[data-mode='tests'] .left-menu-authorization[data-auth='false']").className = "left-menu-authorization active";
-    }
+    
 
     if (sessionStorage.getItem("downloadInformationInBD")){
       const userId = JSON.parse(sessionStorage.getItem("user")).userId;
@@ -539,8 +550,12 @@
       let regionInTest = sessionStorage.getItem("region");
       let correctedAnswersInTest = sessionStorage.getItem("correctedAnswers");
 
-      set(push(child(databaseRef, `users/historyOfTests/${userId}`)), {
+
+      let newKey = push(child(databaseRef, `users`))._path.pieces_[1]
+
+      set(child(databaseRef, `users/historyOfTests/${userId}/${newKey}`), {
         informationAboutTest: {
+          id: newKey,
           date: dateForBD,
           spendTime: spendTimeForTest,
           subject: subjectOfTest,
@@ -613,6 +628,13 @@
     document.getElementById("buttonSignIn").addEventListener("click", authorizationInBD);
     document.getElementById("leftMenuButtonToAuth").addEventListener("click", authorizationInBD);
 
+    document.getElementById("buttonCabinet").addEventListener("click", () => {
+      document.location.href = "personalCabinet.html";
+    });
+    document.getElementById("leftMenuButtonToCabinet").addEventListener("click", () => {
+      document.location.href = "personalCabinet.html";
+    });
+
     document.getElementById("buttonSignOut").addEventListener("click", () => {
       document.querySelector(".button-container#buttonSignIn").classList = "button-container active";
       document.querySelector(".button-container#buttonSignOut").classList = "button-container";
@@ -621,50 +643,6 @@
       document.querySelector("#leftMenu2[data-mode='tests'] .left-menu-authorization[data-auth='false']").className = "left-menu-authorization active";
       sessionStorage.removeItem("user");
     });
-
-    document.getElementById("buttonCabinet").addEventListener("click", () => {
-      document.location.href = "personalCabinet.html";
-    });
-
-    document.getElementById("leftMenuButtonToCabinet").addEventListener("click", () => {
-      document.location.href = "personalCabinet.html";
-    });
-
-    // TO DO click the button with reg/auth
-
-    // document.querySelector(".left-menu-authorization-button#leftMenuButtonToAuth").addEventListener("click", () => {
-
-    // })
-
-    // document.addEventListener("click", (e) => {
-    //   if (e.target.id == "buttonSignIn" || e.target.id == "leftMenuButtonToAuth") {
-    //     if (sessionStorage.getItem("user")) {
-    //       document.location.href = "personalCabinet.html";
-    //     } else {
-    //       signInWithPopup(auth, provider)
-    //         .then((result) => {
-    //           // This gives you a Google Access Token. You can use it to access the Google API.
-    //           const credential = GoogleAuthProvider.credentialFromResult(result);
-    //           const token = credential.accessToken;
-    //           const user = result.user;
-    //           sessionStorage.setItem("user", JSON.stringify(user));
-    //           document.getElementById("buttonSignOut").setAttribute("style", "display:flex");
-    //           document.getElementById("buttonCabinet").setAttribute("style", "display:flex");
-    //           document.getElementById("buttonSignIn").setAttribute("style", "display:none");
-    //           document.querySelector("#leftMenu[data-mode='tests'] .left-menu-authorization[data-auth='false']").classList = "left-menu-authorization";
-    //           document.querySelector("#leftMenu[data-mode='tests'] .left-menu-authorization[data-auth='true']").classList += " active";
-    //           //document.location.href = "personalCabinet.html";
-    //         })
-    //         .catch((error) => {
-    //           const errorCode = error.code;
-    //           const errorMessage = error.message;
-    //           const email = error.customData.email;
-    //           const credential = GoogleAuthProvider.credentialFromError(error);
-    //           console.log(error);
-    //         });
-    //     }
-    //   }
-    // });
   </script>
   <script src="js/dictionaryForMap.js"></script>
   <script src="js/mapGeography.js"></script>

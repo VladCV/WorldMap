@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/global.min.css" />
+    <link rel="stylesheet" href="css/aboutUs.min.css" />
+    <title>Explore The World</title>
+  </head>
+  <body id="body" data-page="aboutUs">
+    <header class="header" id="header">
+  <div class="page-container">
+    <div class="header-container">
+      <div class="header-logo">
+        <a href="index.html">
+          <img src="img/Explore Logo3.svg" alt="logo" />
+        </a>
+      </div>
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <li class="nav-list-point" id="main">
+            <a href="index.html" class="list-point-link active"></a>
+          </li>
+          <li class="nav-list-point" id="map">
+            <a href="map.html" class="list-point-link"></a>
+          </li>
+          <li class="nav-list-point" id="aboutUs">
+            <a href="about_us.html" class="list-point-link"></a>
+          </li>
+        </ul>
+      </nav>
+      <div class="header-buttons">
+        <div class="button-container active" id="button-language">
+          <img src="img/Иконка языка.svg" alt="icon" class="button-icon" />
+          <span class="header-button" data-type="language"> Українська </span>
+          <div class="button-dropdown-content">
+            <span>Русский</span>
+            <span>Украинский</span>
+          </div>
+        </div>
+        <div class="button-container active" id="buttonSignIn">
+          <img
+            src="img/Иконка авторизации.svg"
+            alt="icon"
+            class="button-icon"
+          />
+          <button class="header-button" data-type="signIn"></button>
+        </div>
+        <div class="button-container" id="buttonCabinet">
+          <img
+            src="img/Иконка авторизации.svg"
+            alt="icon"
+            class="button-icon"
+          />
+          <button class="header-button" data-type="cabinet"></button>
+        </div>
+        <div class="button-container" id="buttonSignOut">
+          <img
+            src="img/Иконка авторизации.svg"
+            alt="icon"
+            class="button-icon"
+          />
+          <button class="header-button" data-type="signOut"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+    <div class="page-container min-width">
+      <div class="about-us-container" id="aboutUsContainer">
+        <div class="about-us-title-container">
+          <span class="about-us-title"></span>
+        </div>
+        <div class="about-us-content">
+          <p class="about-us-info"></p>
+          <p class="about-us-info"></p>
+          <p class="about-us-info"></p>
+        </div>
+        <div class="about-us-invite">
+          <p class="about-us-invite-info"></p>
+          <form action="" class="about-us-invite-form">
+            <div class="about-us-invite-input-container">
+              <p class="about-us-invite-text"></p>
+              <input type="text" class="about-us-invite-input" />
+            </div>
+            <div class="about-us-invite-input-container">
+              <p class="about-us-invite-text"></p>
+              <input type="text" class="about-us-invite-input" />
+            </div>
+            <div class="about-us-invite-input-container">
+              <p class="about-us-invite-text"></p>
+              <input type="text" class="about-us-invite-input" />
+            </div>
+            <button class="about-us-invite-button"></button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer" id="footer">
+  <div class="page-container">
+    <div class="footer-container">
+      <div class="footer-columns">
+        <a href="index.html" class="footer-logo">
+          <img src="img/Explore Logo3.svg" alt="logo" />
+        </a>
+      </div>
+      <div class="footer-columns">
+        <p class="footer-column-caption"></p>
+        <ul class="footer-list">
+          <li class="footer-list-point">
+            <a href="" class="footer-list-point-link"></a>
+          </li>
+          <li class="footer-list-point">
+            <a href="" class="footer-list-point-link"></a>
+          </li>
+          <!-- <li class="footer-list-point"></li> -->
+        </ul>
+      </div>
+      <div class="footer-columns">
+        <p class="footer-column-caption"></p>
+        <ul class="footer-list">
+          <li class="footer-list-point">
+            <a href="about_us.html" class="footer-list-point-link"></a>
+          </li>
+          <!-- <li class="footer-list-point"></li> -->
+        </ul>
+      </div>
+      <div class="footer-columns">
+        <p class="footer-column-caption"></p>
+        <ul class="footer-list">
+          <li class="footer-list-point"><a href="" class="footer-list-point-link"></a></li>
+        </ul>
+      </div>
+      <div class="footer-columns">
+        <p class="footer-column-text"></p>
+        <p class="footer-column-text"></p>
+        <button class="footer-button" id="footerButtonForCallBack"></button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="popup-callback-container" id="popupCallBack">
+  <div class="popup-callback-bg" id="popupCallBackBg">
+    <div class="popup-callback-content active" data-stage="1">
+      <div class="popup-callback-close"></div>
+      <div class="popup-callback-header">
+        <span class="popup-callback-header-title"></span>
+      </div>
+      <div class="popup-callback-body">
+        <div class="popup-callback-body-container">
+          <div class="popup-callback-body-input-container">
+            <p class="popup-callback-body-input-text"></p>
+            <input type="text" class="popup-callback-body-input" />
+          </div>
+          <div class="popup-callback-body-input-container">
+            <p class="popup-callback-body-input-text"></p>
+            <textarea type="text" class="popup-callback-body-input textarea"></textarea>
+          </div>
+          <button class="popup-callback-body-button"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="popup-callback"></div>
+
+  </body>
+
+  <script src="js/global.js"></script>
+  <script src="js/globalDictionary.min.js"></script>
+  <script src="js/dictionaryForAboutUs.js"></script>
+  <script>
+    header.querySelector(".nav-list-point#aboutUs .list-point-link").className = "list-point-link active"
+  </script>
+</html>

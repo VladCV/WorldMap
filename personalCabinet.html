@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/global.min.css" />
     <link rel="stylesheet" href="css/personalCabinet.min.css" />
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   </head>
   <body id="body" data-page="personalCabinet">
     <header class="header" id="header">
@@ -19,14 +20,14 @@
       </div>
       <nav class="header-nav">
         <ul class="nav-list">
-          <li class="nav-list-point">
+          <li class="nav-list-point" id="main">
             <a href="index.html" class="list-point-link active"></a>
           </li>
-          <li class="nav-list-point">
-            <a href="#" class="list-point-link"></a>
+          <li class="nav-list-point" id="map">
+            <a href="map.html" class="list-point-link"></a>
           </li>
-          <li class="nav-list-point">
-            <a href="#" class="list-point-link"></a>
+          <li class="nav-list-point" id="aboutUs">
+            <a href="about_us.html" class="list-point-link"></a>
           </li>
         </ul>
       </nav>
@@ -93,18 +94,29 @@
           <div class="personal-cabinet-list-with-tests">
             <p class="list-with-tests-title"></p>
             <div class="list-with-tests-container">
+              <div class="list-with-tests-null" id="nullListWithTests">
+                <p class="list-with-tests-null-text"></p>
+                <p class="list-with-tests-null-text"></p>
+                <button class="list-with-tests-null-button" id="buttonToTests"></button>
+              </div>
               <div class="list-with-tests-sorts"></div>
-              <div class="list-with-tests-tests">
-                <div class="test-container">
-  
-                </div>
+              <div class="list-with-tests-tests" id="listWithTests">
+                <!-- <div class="test-container">
+                  <div class="test-subject-and-date">
+                    <p class="test-subject">География</p>
+                    <p class="test-date">16.10.2022 12:30</p>
+                  </div>
+                  <p class="test-title">“Страна - столица”</p>
+                  <div class="test-mark-and-time">
+                    <p class="test-mark">8/12</p>
+                    <p class="test-time">10:00</p>
+                  </div>
+                </div> -->
               </div>
             </div>
           </div>
         </div>
       </div>
-
-
     </div>
 
     <div class="popup-container" id="popupContinueReg">
@@ -243,32 +255,64 @@
       <div class="footer-columns">
         <p class="footer-column-caption"></p>
         <ul class="footer-list">
-          <li class="footer-list-point"></li>
-          <li class="footer-list-point"></li>
-          <li class="footer-list-point"></li>
+          <li class="footer-list-point">
+            <a href="" class="footer-list-point-link"></a>
+          </li>
+          <li class="footer-list-point">
+            <a href="" class="footer-list-point-link"></a>
+          </li>
+          <!-- <li class="footer-list-point"></li> -->
         </ul>
       </div>
       <div class="footer-columns">
         <p class="footer-column-caption"></p>
         <ul class="footer-list">
-          <li class="footer-list-point"></li>
-          <li class="footer-list-point"></li>
+          <li class="footer-list-point">
+            <a href="about_us.html" class="footer-list-point-link"></a>
+          </li>
+          <!-- <li class="footer-list-point"></li> -->
         </ul>
       </div>
       <div class="footer-columns">
         <p class="footer-column-caption"></p>
         <ul class="footer-list">
-          <li class="footer-list-point"></li>
+          <li class="footer-list-point"><a href="" class="footer-list-point-link"></a></li>
         </ul>
       </div>
       <div class="footer-columns">
         <p class="footer-column-text"></p>
         <p class="footer-column-text"></p>
-        <button class="footer-button" onclick="feedback();"></button>
+        <button class="footer-button" id="footerButtonForCallBack"></button>
       </div>
     </div>
   </div>
 </footer>
+
+<div class="popup-callback-container" id="popupCallBack">
+  <div class="popup-callback-bg" id="popupCallBackBg">
+    <div class="popup-callback-content active" data-stage="1">
+      <div class="popup-callback-close"></div>
+      <div class="popup-callback-header">
+        <span class="popup-callback-header-title"></span>
+      </div>
+      <div class="popup-callback-body">
+        <div class="popup-callback-body-container">
+          <div class="popup-callback-body-input-container">
+            <p class="popup-callback-body-input-text"></p>
+            <input type="text" class="popup-callback-body-input" />
+          </div>
+          <div class="popup-callback-body-input-container">
+            <p class="popup-callback-body-input-text"></p>
+            <textarea type="text" class="popup-callback-body-input textarea"></textarea>
+          </div>
+          <button class="popup-callback-body-button"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="popup-callback"></div>
 
   </body>
 
@@ -276,6 +320,14 @@
   <script src="js/globalDictionary.js"></script>
 
   <script type="module">
+    // Have to check userId in BD to be more protected
+    if (sessionStorage.getItem("user")) {
+      document.querySelector(".button-container#buttonSignIn").classList = "button-container";
+      document.querySelector(".button-container#buttonSignOut").classList = "button-container active";
+    } else {
+      document.location.href = "index.html";
+    }
+
     import { getAuth, signInWithPopup, signInWithRedirect, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
     import { getDatabase, ref, set, get, child, update, remove } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
@@ -296,82 +348,28 @@
     const provider = new GoogleAuthProvider(app);
     const auth = getAuth(app);
 
-    const refToRegistrationInformation = languageCode + "/СountriesRegionsSchoolsAndSubjects";
-    // get(child(databaseRef, refToRegistrationInformation))
-    //   .then((snapshot) => {
-    //     // console.log(Object.keys(snapshot.val()));
-    //   })
-    //   .catch((error) => {
-    //     alert("Something was wrong with connecting to database. Please, reload the page (F5)");
-    //   });
+    const userId = JSON.parse(sessionStorage.getItem("user")).userId;
 
-    if (sessionStorage.getItem("user")) {
-      document.querySelector(".button-container#buttonSignIn").classList = "button-container";
-      document.querySelector(".button-container#buttonSignOut").classList = "button-container active";
-      //document.querySelector(".button-container#buttonCabinet").classList = "button-container active";
-    } else {
-      // Have to check userId in BD to be more protected
-      document.location.href = "index.html";
-    }
-
-    // document.getElementById("buttonSignIn").addEventListener("click", () => {
-    //   signInWithPopup(auth, provider).then((result) => {
-    //     const credential = GoogleAuthProvider.credentialFromResult(result);
-    //     const token = credential.accessToken;
-    //     const user = result.user;
-    //     const userID = user.uid;
-    //     const refToListWithUsers = "users/informationAboutUsers/" + userID;
-    //     get(child(databaseRef, refToListWithUsers))
-    //       .then((snapshot) => {
-    //         continueRegistration(snapshot.val());
-    //       })
-    //       .catch((error) => {
-    //         console.log("error = " + error);
-    //       });
-    //     function continueRegistration(snap) {
-    //       let informationAboutUser = "";
-    //       if (snap) {
-    //         informationAboutUser = snap;
-    //       } else {
-    //         let userName = user.displayName;
-    //         let userEmail = user.email;
-    //         let userPhoto = user.reloadUserInfo.photoUrl;
-    //         let userDate = user.metadata.createdAt;
-    //         set(child(databaseRef, "users/informationAboutUsers/" + userID), {
-    //           userId: userID,
-    //           userName: userName,
-    //           userEmail: userEmail,
-    //           userPhoto: userPhoto,
-    //           userDateOfRegister: userDate,
-    //         });
-    //         informationAboutUser = {
-    //           userId: userID,
-    //           userName: userName,
-    //           userEmail: userEmail,
-    //           userPhoto: userPhoto,
-    //           userDateOfRegister: userDate,
-    //         };
-    //       }
-    //       sessionStorage.setItem("user", JSON.stringify(informationAboutUser));
-    //       document.querySelector(".button-container#buttonSignIn").classList = "button-container";
-    //       document.querySelector(".button-container#buttonSignOut").classList = "button-container active";
-    //       //document.querySelector(".button-container#buttonCabinet").classList = "button-container active";
-    //     }
-    //   });
-    //   //}
-    // });
+    console.log(`users/historyOfTests/${userId}`);
+    get(child(databaseRef, `users/historyOfTests/${userId}`))
+      .then((snapshot) => {
+        if(snapshot.val()){
+          showTests(snapshot);
+        } else {
+          nullListWithTests.classList = "list-with-tests-null active"
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
     document.getElementById("buttonSignOut").addEventListener("click", () => {
       document.querySelector(".button-container#buttonSignIn").classList = "button-container active";
       document.querySelector(".button-container#buttonSignOut").classList = "button-container";
       document.querySelector(".button-container#buttonCabinet").classList = "button-container";
       sessionStorage.removeItem("user");
-      document.location.href = "index.html"
+      document.location.href = "index.html";
     });
-
-    // document.getElementById("buttonCabinet").addEventListener("click", () => {
-    //   document.location.href = "personalCabinet.html";
-    // });
   </script>
 
   <script src="js/dictionaryForPersonalCabinet.js"></script>
