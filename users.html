@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/global.min.css" />
-    <link rel="stylesheet" href="css/aboutUs.min.css" />
+    <link rel="stylesheet" href="css/users.min.css" />
     <title>Explore The World</title>
   </head>
-  <body id="body" data-page="aboutUs">
+  <body id="body" data-page="users">
     <header class="header" id="header">
   <div class="page-container">
     <div class="header-container">
@@ -71,31 +71,32 @@
 
 
     <div class="page-container min-width">
-      <div class="about-us-container" id="aboutUsContainer">
-        <div class="about-us-title-container">
-          <span class="about-us-title"></span>
+      <div class="users-container" id="usersContainer">
+        <div class="users-title-container">
+          <span class="users-title"></span>
         </div>
-        <div class="about-us-content">
-          <p class="about-us-info"></p>
-          <p class="about-us-info"></p>
-          <p class="about-us-info"></p>
+        <div class="users-content">
+          <p class="users-info"></p>
+          <p class="users-info" id="nonAuth"></p>
+          <p class="users-info" id="auth"></p>
+          <p class="users-info"></p>
         </div>
-        <div class="about-us-invite">
-          <p class="about-us-invite-info"></p>
-          <form action="" class="about-us-invite-form">
-            <div class="about-us-invite-input-container">
-              <p class="about-us-invite-text"></p>
-              <input type="text" class="about-us-invite-input" />
+        <div class="users-invite">
+          <p class="users-invite-info"></p>
+          <form action="" class="users-invite-form">
+            <div class="users-invite-input-container">
+              <p class="users-invite-text"></p>
+              <input type="text" class="users-invite-input" />
             </div>
-            <div class="about-us-invite-input-container">
-              <p class="about-us-invite-text"></p>
-              <input type="text" class="about-us-invite-input" />
+            <div class="users-invite-input-container">
+              <p class="users-invite-text"></p>
+              <input type="text" class="users-invite-input" />
             </div>
-            <div class="about-us-invite-input-container">
-              <p class="about-us-invite-text"></p>
-              <input type="text" class="about-us-invite-input" />
+            <div class="users-invite-input-container">
+              <p class="users-invite-text"></p>
+              <input type="text" class="users-invite-input" />
             </div>
-            <button class="about-us-invite-button"></button>
+            <button class="users-invite-button"></button>
           </form>
         </div>
       </div>
@@ -172,11 +173,7 @@
 <div class="popup-callback"></div>
 
   </body>
-
   <script src="js/global.js"></script>
   <script src="js/globalDictionary.min.js"></script>
-  <script src="js/dictionaryForAboutUs.js"></script>
-  <script>
-    header.querySelector(".nav-list-point#aboutUs .list-point-link").className = "list-point-link active"
-  </script>
+  <script src="js/dictionaryForUsers.js"></script>
 </html>
