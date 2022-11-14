@@ -1250,8 +1250,8 @@ if (sessionStorage.getItem("stageOfTest") == "finished") {
 }
 
 popupTestGeography1.querySelector(".popup-body[data-testStage='1'] .popup-body-button").addEventListener("click", function () {
-  popupTestGeographyInfo0 = "geography";
-  popupTestGeographyInfo1 = "1";
+  popupTestGeographyInfo0 = "0";
+  popupTestGeographyInfo1 = "0";
   popupTestGeographyInfo2 = popupTestGeography1.querySelector(".popup-body-list-point-input[name='selectRegionOfTheWorld']").value;
   popupTestGeographyInfo3 = popupTestGeography1.querySelector(".popup-body-list-point-input[name='selectKnowledge']").value;
   popupTestGeographyInfo4 = popupTestGeography1.querySelector(".popup-body-list-point-input[name='inputNumberQuestions']").value;

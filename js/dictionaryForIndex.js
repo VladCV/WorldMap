@@ -1,10 +1,9 @@
 const dictionaryForIndex = [
-    ["У нас Ви можете:"],
+    ["У нас Ви можете вивчити:"],
 
-    ["Вивчити географію країн за допомогою карти;"],
-    ["Дізнатися щось нове про економіку будь-яких країн;"],
-    ["Вибрати найбільш підходящий вищий навчальний заклад;"],
-    ["Знайти чудове місце для відпочинку."],
+    ["Знаходження всіх країн;"],
+    ["Столиці всіх країн;"],
+    ["Міжнародні організації та країни, які до них відносяться"],
 
     ["продовжити!"],
 
@@ -16,9 +15,9 @@ const dictionaryForIndex = [
     ["Відкривши карту в цьому режимі, Ви вивчите:"],
 
     ["Карту світу"], // 1
-    ["Водойми, гори, вулкани"],
+    ["Столиці всіх країн"],
     ["Корисні копалини та промисловість"],
-    ["Загальну географічну характеристику кожної країни"],
+    ["Міжнародні організації"], 
 
 
     ["Всесвітню історію"], // 2
@@ -47,21 +46,21 @@ document.querySelectorAll('.main-facilities-list-point').forEach((e) => {
     aa++;
 })
 
-document.querySelector('.continue-container .continue-text').innerText = dictionaryForIndex[5][languageId];
+document.querySelector('.continue-container .continue-text').innerText = dictionaryForIndex[4][languageId];
 
-let ab = 6;
-let ac = 11;
+let ab = 5;
+let ac = 10;
 document.querySelectorAll('.slide-content').forEach((e) => {
     e.querySelector('.slide-title .title-text').innerText = dictionaryForIndex[ab][languageId];
     e.querySelector('.slide-button').dataset.mode = dictionaryForIndex[ab][languageId]
     ab++;
 
-    e.querySelector('.slide-main-text .main-text-title').innerText = dictionaryForIndex[10][languageId];
+    e.querySelector('.slide-main-text .main-text-title').innerText = dictionaryForIndex[9][languageId];
 
     e.querySelectorAll('.main-text-point').forEach((li) => {
         li.innerText = dictionaryForIndex[ac][languageId];
         ac++;
     })
 
-    e.querySelector('.slide-button').innerText = dictionaryForIndex[27][languageId];
+    e.querySelector('.slide-button').innerText = dictionaryForIndex[26][languageId];
 })

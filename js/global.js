@@ -25,4 +25,18 @@ if (localStorage.getItem("languageId")) {
     localStorage.setItem("languageCode", languageCode)
 }
 
-console.log("awdwad languageId = " + languageId)
+//console.log("awdwad languageId = " + languageId)
+
+document.getElementById("footerButtonForCallBack").addEventListener("click", (e) => {
+    document.getElementById("popupCallBack").className = "popup-callback-container active";
+    body.classList = " popup-active"
+    document.querySelector("#popupCallBack .popup-callback-content").className = "popup-callback-content active";
+})
+
+document.getElementById("popupCallBack").addEventListener("click", (e) => {
+    if (e.target.className == "popup-callback-bg" || e.target.className == "popup-callback-close") {
+        document.getElementById("popupCallBack").className = "popup-container";
+        document.querySelector("#popupCallBack .popup-callback-content.active").className = "popup-callback-content";
+        body.className = "";
+    }
+})

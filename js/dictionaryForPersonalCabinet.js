@@ -2,7 +2,10 @@ const dictionaryForFirstVersion = [
     ["Особистий кабінет"],
     ["Змінити фото"],
     ["Налаштування"],
-    ["Тести, які Ви пройшли:"]
+    ["Тести, які Ви пройшли:"],
+    ["Поки що Ви не пройшли жодного тесту."],
+    ["Але Ви можете зробити це зараз."],
+    ["Перейти до тестів"]
 ]
 
 
@@ -57,6 +60,14 @@ pCabinet.querySelectorAll(".personal-cabinet-button").forEach((e) => {
 });
 
 pCabinet.querySelector(".list-with-tests-title").innerText = dictionaryForFirstVersion[3][languageId]
+
+let cd = 4
+pCabinet.querySelectorAll(".list-with-tests-null .list-with-tests-null-text").forEach((e) => {
+    e.innerText = dictionaryForFirstVersion[cd][languageId];
+    cd++;
+})
+
+pCabinet.querySelector(".list-with-tests-null-button").innerText = dictionaryForFirstVersion[6][languageId]
 
 // let ca = 1
 // pCabinet.querySelectorAll(".personal-cabinet-button").forEach((e) => {
