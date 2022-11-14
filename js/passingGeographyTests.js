@@ -1237,13 +1237,13 @@ let popupTestGeographyInfo4 = "";
 
 if (sessionStorage.getItem("stageOfTest") == "finished") {
   switch (sessionStorage.getItem("numberOfTest")) {
-    case "1":
+    case "0":
       finishGeographyTest1();
       break;
-    case "2":
+    case "1":
       finishGeographyTest2();
       break;
-    case "3":
+    case "2":
       finishGeographyTest3();
       break;
   }
