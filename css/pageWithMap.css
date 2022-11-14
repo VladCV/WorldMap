@@ -668,7 +668,7 @@
   border-radius: 10px;
   position: relative;
   display: none;
-  width: 800px;
+  width: 990px;
   padding: 40px 85px;
   padding-bottom: 60px;
   margin: auto;
@@ -757,7 +757,7 @@
 }
 
 .popup-container .popup-bg .popup-content .popup-body .popup-body-list .popup-body-list-point .popup-body-list-point-input {
-  width: 290px;
+  width: 330px;
   height: 46px;
   border: none;
   display: -webkit-box;

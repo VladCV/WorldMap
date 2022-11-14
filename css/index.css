@@ -78,6 +78,10 @@
   left: -6px;
 }
 
+.slider-container {
+  margin-bottom: 100px;
+}
+
 .slider-container .flex-container {
   padding-top: 100px;
   width: 100%;
