@@ -412,24 +412,24 @@
           box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.4);
 }
 
-.map-container #map {
+.map-container #mapCont {
   width: 100%;
   height: auto;
 }
 
-.map-container #map .all-map {
+.map-container #mapCont .all-map {
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
-.map-container #map .all-map.geography {
+.map-container #mapCont .all-map.geography {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0680c5), color-stop(28%, rgba(6, 128, 197, 0.8)), color-stop(60%, rgba(8, 103, 157, 0.8)), to(rgba(84, 162, 205, 0.8)));
   background: -o-linear-gradient(top, #0680c5 0, rgba(6, 128, 197, 0.8) 28%, rgba(8, 103, 157, 0.8) 60%, rgba(84, 162, 205, 0.8) 100%);
   background: linear-gradient(180deg, #0680c5 0, rgba(6, 128, 197, 0.8) 28%, rgba(8, 103, 157, 0.8) 60%, rgba(84, 162, 205, 0.8) 100%);
 }
 
-.map-container #map .all-map .cells {
+.map-container #mapCont .all-map .cells {
   position: absolute;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   display: grid;
@@ -440,21 +440,21 @@
   z-index: 0;
 }
 
-.map-container #map .all-map .cells .cell {
+.map-container #mapCont .all-map .cells .cell {
   border: 1px solid rgba(117, 117, 117, 0.1);
 }
 
-.map-container #map .all-map .svg-container {
+.map-container #mapCont .all-map .svg-container {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
-.map-container #map .all-map .svg-container:active {
+.map-container #mapCont .all-map .svg-container:active {
   cursor: move;
 }
 
-.map-container #map .all-map .svg-container svg {
+.map-container #mapCont .all-map .svg-container svg {
   padding: 100px;
   position: relative;
   z-index: 0;
@@ -466,7 +466,7 @@
   height: 200%;
 }
 
-.map-container #map .all-map .svg-container svg .country {
+.map-container #mapCont .all-map .svg-container svg .country {
   fill: #e0e0e0;
   stroke: #8d8d8d;
   stroke-width: 0.4px;
@@ -478,23 +478,23 @@
   z-index: 2;
 }
 
-.map-container #map .all-map .svg-container svg .country.inter {
+.map-container #mapCont .all-map .svg-container svg .country.inter {
   fill: #c9c9c9;
   stroke-width: 0.6px;
 }
 
-.map-container #map .all-map .svg-container svg .country.hover {
+.map-container #mapCont .all-map .svg-container svg .country.hover {
   fill: #c4c3c3;
   stroke-width: 0.8px;
 }
 
-.map-container #map .all-map .svg-container svg path {
+.map-container #mapCont .all-map .svg-container svg path {
   -webkit-transform: translate(0, -3.21);
       -ms-transform: translate(0, -3.21);
           transform: translate(0, -3.21);
 }
 
-.map-container #map .visible-area {
+.map-container #mapCont .visible-area {
   position: absolute;
   width: 100%;
   height: 100%;
