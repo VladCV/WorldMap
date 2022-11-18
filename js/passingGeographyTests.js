@@ -1239,12 +1239,15 @@ if (sessionStorage.getItem("stageOfTest") == "finished") {
   switch (sessionStorage.getItem("numberOfTest")) {
     case "0":
       finishGeographyTest1();
+      sessionStorage.removeItem("stageOfTest");
       break;
     case "1":
       finishGeographyTest2();
+      sessionStorage.removeItem("stageOfTest")
       break;
     case "2":
       finishGeographyTest3();
+      sessionStorage.removeItem("stageOfTest")
       break;
   }
 }
@@ -1281,5 +1284,4 @@ popupTestGeography1.querySelector(".popup-body[data-testStage='4'] .popup-body-b
   document.getElementById("popupTestsInMap").className = "popup-container";
   popupTestGeography1.className = "popup-content";
   popupTestGeography1.querySelector(".popup-body[data-testStage='1']").className = "popup-body";
-  sessionStorage.removeItem("stageOfTest")
 });
