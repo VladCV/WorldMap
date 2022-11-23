@@ -5,10 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Explore the World</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/global.min.css" />
     <link rel="stylesheet" href="css/pageWithMap.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -283,12 +280,12 @@
               class="popup-body-list-point-input"
               name="selectRegionOfTheWorld"
             >
-              <option value="0" selected></option>
-              <option value="1"></option>
+              <option value="0" disabled></option>
+              <option value="1" selected></option>
               <option value="2"></option>
               <option value="3"></option>
-              <option value="4"></option>
-              <option value="5"></option>
+              <option value="4" disabled></option>
+              <option value="5" disabled></option>
             </select>
           </li>
           <li class="popup-body-list-point">
@@ -330,11 +327,12 @@
               name="inputTimeForTest"
               value="5"
               class="popup-body-list-point-input"
+              min="1" max="60"
             />
           </li>
         </ul>
         <p class="popup-body-warning"></p>
-        <div class="popup-body-button"></div>
+        <button class="popup-body-button"></button>
       </div>
       <!-- <div class="popup-body" data-testStage="2">
         <div class="popup-body-information">
@@ -348,16 +346,16 @@
         </div>
         <div class="popup-body-button"></div>
       </div> -->
-      <div class="popup-body" data-testStage="3">
+      <!-- <div class="popup-body" data-testStage="3">
         <div class="popup-body-information">
           <p class="popup-body-question"></p>
           <p class="popup-body-question"></p>
         </div>
         <div class="popup-body-buttons">
-          <div class="popup-body-button" data-button="previous"></div>
-          <div class="popup-body-button" data-button="next"></div>
+          <button class="popup-body-button" data-button="previous"></button>
+          <button class="popup-body-button" data-button="next"></button>
         </div>
-      </div>
+      </div> -->
       <div class="popup-body" data-testStage="4">
         <div class="popup-body-title"></div>
         <ul class="popup-body-list">
@@ -412,7 +410,134 @@
             </div>
           </li>
         </ul>
-        <div class="popup-body-button"></div>
+        <button class="popup-body-button"></button>
+      </div>
+    </div>
+    <div class="popup-content" data-test="geography2">
+      <div class="popup-close"></div>
+      <div class="popup-header">
+        <span class="popup-header-title">Тестування 'Країна - адміністративні одиниці'</span>
+      </div>
+      <div class="popup-body" data-testStage="1">
+        <div class="popup-body-title">За допомогою цього тесту Ви зможете перевірити своє знання країн та їх адміністративних одиниц. Щоб розпочати тестування необхідно налаштувати тест та натиснути на кнопку “Розпочати тестування”</div>
+        <ul class="popup-body-list">
+          <li class="popup-body-list-point">
+            <p class="popup-body-list-point-text-container">
+              <span class="popup-body-list-point-text-info-icon">
+                &#128712;</span
+              >
+              <span class="popup-body-list-point-text">Країна: </span>
+            </p>
+            <select
+              class="popup-body-list-point-input"
+              name="selectCountryOfTheWorld"
+            >
+              <option value="0" selected>Україна</option>
+              <option value="1">Польща</option>
+              <option value="2">Чехія</option>
+            </select>
+          </li>
+          <!-- <li class="popup-body-list-point">
+            <p class="popup-body-list-point-text-container">
+              <span class="popup-body-list-point-text-info-icon">
+                &#128712;</span
+              >
+              <span class="popup-body-list-point-text"></span>
+            </p>
+            <select class="popup-body-list-point-input" name="selectKnowledge">
+              <option value="0" selected>Країн та столиць</option>
+              <option value="1">Країн</option>
+              <option value="2">Столиць</option>
+            </select>
+          </li> -->
+          <li class="popup-body-list-point">
+            <p class="popup-body-list-point-text-container">
+              <span class="popup-body-list-point-text-info-icon">
+                &#128712;</span
+              >
+              <span class="popup-body-list-point-text">Кількість питань</span>
+            </p>
+            <input
+              value="12"
+              type="number"
+              name="inputNumberQuestions"
+              class="popup-body-list-point-input"
+            />
+          </li>
+          <li class="popup-body-list-point">
+            <p class="popup-body-list-point-text-container">
+              <span class="popup-body-list-point-text-info-icon">
+                &#128712;</span
+              >
+              <span class="popup-body-list-point-text">Кількість часу</span>
+            </p>
+            <input
+              type="number"
+              name="inputTimeForTest"
+              value="5"
+              class="popup-body-list-point-input"
+              min="1" max="60"
+            />
+          </li>
+        </ul>
+        <p class="popup-body-warning"></p>
+        <button class="popup-body-button">Розпочати тестування</button>
+      </div>
+      <div class="popup-body" data-testStage="4">
+        <div class="popup-body-title"></div>
+        <ul class="popup-body-list">
+          <li class="popup-body-list-point">
+            <p class="popup-body-list-point-text-container">
+              <span class="popup-body-list-point-text-info-icon">
+                &#128712;</span
+              >
+              <span class="popup-body-list-point-text">Країна: </span>
+            </p>
+            <div class="popup-body-list-point-input" data-input="region">
+              <span class="popup-body-list-point-input-information"></span>
+            </div>
+          </li>
+          <li class="popup-body-list-point">
+            <p class="popup-body-list-point-text-container">
+              <span class="popup-body-list-point-text-info-icon">
+                &#128712;</span
+              >
+              <span class="popup-body-list-point-text">Кіль-сть питань: </span>
+            </p>
+            <div
+              class="popup-body-list-point-input"
+              data-input="numberQuestions"
+            >
+              <span class="popup-body-list-point-input-information"></span>
+            </div>
+          </li>
+          <li class="popup-body-list-point">
+            <p class="popup-body-list-point-text-container">
+              <span class="popup-body-list-point-text-info-icon">
+                &#128712;</span
+              >
+              <span class="popup-body-list-point-text">Кіль-сть правильних відповідей: </span>
+            </p>
+            <div
+              class="popup-body-list-point-input"
+              data-input="numberTrueAnswers"
+            >
+              <span class="popup-body-list-point-input-information"></span>
+            </div>
+          </li>
+          <li class="popup-body-list-point">
+            <p class="popup-body-list-point-text-container">
+              <span class="popup-body-list-point-text-info-icon">
+                &#128712;</span
+              >
+              <span class="popup-body-list-point-text">Витрачено часу: </span>
+            </p>
+            <div class="popup-body-list-point-input" data-input="spendTime">
+              <span class="popup-body-list-point-input-information"></span>
+            </div>
+          </li>
+        </ul>
+        <button class="popup-body-button"></button>
       </div>
     </div>
   </div>
@@ -449,7 +574,7 @@
       <div class="footer-columns">
         <p class="footer-column-caption"></p>
         <ul class="footer-list">
-          <li class="footer-list-point"><a href="" class="footer-list-point-link"></a></li>
+          <li class="footer-list-point"><a href="faq.html" class="footer-list-point-link"></a></li>
         </ul>
       </div>
       <div class="footer-columns">
@@ -489,15 +614,15 @@
 
   </body>
 
-  <script src="js/global.js"></script>
+  <script src="js/global.min.js"></script>
   <script src="js/globalDictionary.min.js"></script>
-  <script src="js/dictionaryForGeographyTests.js"></script>
+  <script src="js/dictionaryForGeographyTests.min.js"></script>
   <script type="module">
-    header.querySelector(".nav-list-point#map .list-point-link").className = "list-point-link active"
+    header.querySelector(".nav-list-point#map .list-point-link").className = "list-point-link active";
 
     import { getAuth, signInWithPopup, signInWithRedirect, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-    import { getDatabase, ref, set, get, child, update, remove, push} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+    import { getDatabase, ref, set, get, child, update, remove, push } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCd1ey19rgxuiGoe3s1fgwAXBor2u6ZQ6c",
@@ -517,7 +642,6 @@
 
     const countries = document.querySelectorAll(".country");
 
-
     const refToGeneralInformation = languageCode + "/CountryNamesCapitalNamesInternationalOrganizations";
     get(child(databaseRef, refToGeneralInformation))
       .then((snapshot) => {
@@ -536,9 +660,7 @@
         //
       });
 
-    
-
-    if (sessionStorage.getItem("downloadInformationInBD")){
+    if (sessionStorage.getItem("downloadInformationInBD")) {
       const userId = JSON.parse(sessionStorage.getItem("user")).userId;
       const d = new Date();
 
@@ -550,22 +672,37 @@
       let regionInTest = sessionStorage.getItem("region");
       let correctedAnswersInTest = sessionStorage.getItem("correctedAnswers");
 
+      let newKey = push(child(databaseRef, `users`))._path.pieces_[1];
 
-      let newKey = push(child(databaseRef, `users`))._path.pieces_[1]
-
-      set(child(databaseRef, `users/historyOfTests/${userId}/${newKey}`), {
-        informationAboutTest: {
-          id: newKey,
-          date: dateForBD,
-          spendTime: spendTimeForTest,
-          subject: subjectOfTest,
-          test: numberOfTest,
-          region: regionInTest, 
-          numberOfAnswers: questionsForBD.length,
-          correctedAnswers: correctedAnswersInTest
-        },
-        listWithQuestions: questionsForBD,
-      })
+      if (numberOfTest == 0) {
+        set(child(databaseRef, `users/historyOfTests/${userId}/${newKey}`), {
+          informationAboutTest: {
+            id: newKey,
+            date: dateForBD,
+            spendTime: spendTimeForTest,
+            subject: subjectOfTest,
+            test: numberOfTest,
+            region: regionInTest,
+            numberOfAnswers: questionsForBD.length,
+            correctedAnswers: correctedAnswersInTest,
+          },
+          listWithQuestions: questionsForBD,
+        });
+      } else if (numberOfTest == 1) {
+        set(child(databaseRef, `users/historyOfTests/${userId}/${newKey}`), {
+          informationAboutTest: {
+            id: newKey,
+            date: dateForBD,
+            spendTime: spendTimeForTest,
+            subject: subjectOfTest,
+            test: numberOfTest,
+            country: regionInTest,
+            numberOfAnswers: questionsForBD.length,
+            correctedAnswers: correctedAnswersInTest,
+          },
+          listWithQuestions: questionsForBD,
+        });
+      }
 
       sessionStorage.removeItem("downloadInformationInBD");
       sessionStorage.removeItem("questions");
@@ -622,7 +759,6 @@
           document.querySelector("#leftMenu2[data-mode='tests'] .left-menu-authorization[data-auth='false']").className = "left-menu-authorization";
         }
       });
-    
     }
 
     document.getElementById("buttonSignIn").addEventListener("click", authorizationInBD);
@@ -644,9 +780,9 @@
       sessionStorage.removeItem("user");
     });
   </script>
-  <script src="js/dictionaryForMap.js"></script>
-  <script src="js/mapGeography.js"></script>
-  <script src="js/scrollingMap.js"></script>
-  <script src="js/maps.js"></script>
-  <script src="js/passingGeographyTests.js"></script>
+  <script src="js/dictionaryForMap.min.js"></script>
+  <script src="js/mapGeography.min.js"></script>
+  <script src="js/scrollingMap.min.js"></script>
+  <script src="js/maps.min.js"></script>
+  <script src="js/passingGeographyTests.min.js"></script>
 </html>
