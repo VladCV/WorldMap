@@ -58,7 +58,8 @@
           transform: translate(-50%, -50%) scale(1.5);
 }
 
-.map-container #map .all-map .svg-container svg .country {
+.map-container #map .all-map .svg-container svg .country,
+.map-container #map .all-map .svg-container svg .region {
   fill: #e0e0e0;
   stroke: #8d8d8d;
   stroke-width: 0.4px;
@@ -70,12 +71,14 @@
   z-index: 2;
 }
 
-.map-container #map .all-map .svg-container svg .country.inter {
+.map-container #map .all-map .svg-container svg .country.inter,
+.map-container #map .all-map .svg-container svg .region.inter {
   fill: #c9c9c9;
   stroke-width: 0.6px;
 }
 
-.map-container #map .all-map .svg-container svg .country.hover {
+.map-container #map .all-map .svg-container svg .country.hover,
+.map-container #map .all-map .svg-container svg .region.hover {
   fill: #c4c3c3;
   stroke-width: 0.8px;
 }

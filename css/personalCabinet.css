@@ -107,6 +107,20 @@
   display: flex;
 }
 
+.page-container.min-width .personal-cabinet-container .personal-cabinet-content .personal-cabinet-person .personal-cabinet-name-and-buttons .personal-cabinet-buttons .personal-cabinet-button.disactive {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: -o-linear-gradient(349.99deg, #aec6d1 20.54%, #a3cadc 61.75%);
+  background: linear-gradient(100.01deg, #aec6d1 20.54%, #a3cadc 61.75%);
+}
+
+.page-container.min-width .personal-cabinet-container .personal-cabinet-content .personal-cabinet-person .personal-cabinet-name-and-buttons .personal-cabinet-buttons .personal-cabinet-button.disactive:hover {
+  cursor: default;
+  -webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
 .page-container.min-width .personal-cabinet-container .personal-cabinet-content .personal-cabinet-information {
   margin-top: 80px;
   display: none;
@@ -696,16 +710,16 @@
   margin-top: 20px;
   min-height: 150px;
   border-radius: 10px;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   overflow-y: auto;
   display: -webkit-box;
 }
 
 .popup-information-about-the-test-container .popup-information-about-the-test-bg .popup-information-about-the-test-content .popup-information-about-the-test-body .popup-information-about-the-test-questions-container .popup-information-about-the-test-question-content {
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
   width: 300px;
   padding: 10px;
-  border-right: 1px solid #E1E1E1;
+  border-right: 1px solid #e1e1e1;
 }
 
 .popup-information-about-the-test-container .popup-information-about-the-test-bg .popup-information-about-the-test-content .popup-information-about-the-test-body .popup-information-about-the-test-questions-container .popup-information-about-the-test-question-content:last-child {
@@ -727,11 +741,11 @@
 }
 
 .popup-information-about-the-test-container .popup-information-about-the-test-bg .popup-information-about-the-test-content .popup-information-about-the-test-body .popup-information-about-the-test-questions-container .popup-information-about-the-test-question-content .popup-information-about-the-test-question-number-and-correctly .popup-information-about-the-test-question-correctly.correctly {
-  color: #0C9200;
+  color: #0c9200;
 }
 
 .popup-information-about-the-test-container .popup-information-about-the-test-bg .popup-information-about-the-test-content .popup-information-about-the-test-body .popup-information-about-the-test-questions-container .popup-information-about-the-test-question-content .popup-information-about-the-test-question-number-and-correctly .popup-information-about-the-test-question-correctly.uncorrectly {
-  color: #FF0000;
+  color: #ff0000;
 }
 
 .popup-information-about-the-test-container .popup-information-about-the-test-bg .popup-information-about-the-test-content .popup-information-about-the-test-body .popup-information-about-the-test-questions-container .popup-information-about-the-test-question-content .popup-information-about-the-test-question-question-and-answer {
@@ -803,6 +817,177 @@
 }
 
 .popup-information-about-the-test-container .popup-information-about-the-test-bg .popup-information-about-the-test-content .popup-information-about-the-test-button:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.4);
+          box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.4);
+}
+
+.popup-change-image-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  display: none;
+  z-index: 999;
+}
+
+.popup-change-image-container.active {
+  display: block;
+}
+
+.popup-change-image-container .popup-change-image-bg {
+  position: absolute;
+  display: block;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup-change-image-container .popup-change-image-bg .popup-change-image-content {
+  border-radius: 10px;
+  position: relative;
+  display: none;
+  max-height: 560px;
+  width: 970px;
+  padding: 50px 100px;
+  margin: auto;
+  margin-top: 104px;
+  background-color: #fff;
+}
+
+.popup-change-image-container .popup-change-image-bg .popup-change-image-content.active {
+  display: block;
+}
+
+.popup-change-image-container .popup-change-image-bg .popup-change-image-content .popup-change-image-close {
+  display: block;
+  position: relative;
+  left: -130px;
+}
+
+.popup-change-image-container .popup-change-image-bg .popup-change-image-content .popup-change-image-close:hover {
+  cursor: pointer;
+}
+
+.popup-change-image-container .popup-change-image-bg .popup-change-image-content .popup-change-image-close::after {
+  content: "";
+  right: -120px;
+  top: 10px;
+  position: absolute;
+  width: 23px;
+  height: 1.5px;
+  background: #000;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.popup-change-image-container .popup-change-image-bg .popup-change-image-content .popup-change-image-close::before {
+  content: "";
+  right: -120px;
+  top: 10px;
+  position: absolute;
+  width: 23px;
+  height: 1.5px;
+  background: #000;
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.popup-change-image-container .popup-change-image-bg .popup-change-image-content .popup-change-image-header {
+  text-align: center;
+}
+
+.popup-change-image-container .popup-change-image-bg .popup-change-image-content .popup-change-image-header .popup-change-image-header-title {
+  font-weight: 500;
+  font-size: 24px;
+  position: relative;
+}
+
+.popup-change-image-container .popup-change-image-bg .popup-change-image-content .popup-change-image-header .popup-change-image-header-title::before {
+  position: absolute;
+  left: -50px;
+  top: -3px;
+}
+
+.popup-change-image-container .popup-change-image-bg .popup-change-image-content .popup-change-image-body .popup-change-image-url-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 40px;
+}
+
+.popup-change-image-container .popup-change-image-bg .popup-change-image-content .popup-change-image-body .popup-change-image-url-container .popup-change-image-text {
+  font-weight: 400;
+  margin-right: 20px;
+  font-size: 18px;
+}
+
+.popup-change-image-container .popup-change-image-bg .popup-change-image-content .popup-change-image-body .popup-change-image-url-container .popup-change-image-input {
+  width: 100%;
+  max-width: 500px;
+  height: 46px;
+  border: none;
+  background: #f0f0f0;
+  border-bottom: 2px solid #e1e1e1;
+  border-radius: 10px;
+  padding: 0 10px;
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.popup-change-image-container .popup-change-image-bg .popup-change-image-content .popup-change-image-body .popup-change-image-url-container .popup-change-image-input:focus,
+.popup-change-image-container .popup-change-image-bg .popup-change-image-content .popup-change-image-body .popup-change-image-url-container .popup-change-image-input:active {
+  outline: none;
+  border-bottom: 2px solid #afafaf;
+}
+
+.popup-change-image-container .popup-change-image-bg .popup-change-image-content .popup-change-image-button {
+  background: -o-linear-gradient(349.99deg, #d5f2ff 20.54%, #bdebff 61.75%);
+  background: linear-gradient(100.01deg, #d5f2ff 20.54%, #bdebff 61.75%);
+  -webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.2);
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px;
+  width: 380px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 24px;
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border: none;
+}
+
+.popup-change-image-container .popup-change-image-bg .popup-change-image-content .popup-change-image-button:hover {
   cursor: pointer;
   -webkit-box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.4);
           box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.4);

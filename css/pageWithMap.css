@@ -830,6 +830,7 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  border: none;
 }
 
 .popup-container .popup-bg .popup-content .popup-body .popup-body-button:hover {
