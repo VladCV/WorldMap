@@ -1,4 +1,4 @@
-const questionsForTests = [[" Натисніть на країну з назвою "], [" Натисніть на країну зі столицею "], [""], [""], [""], [""], [""], [""], [""], [""], [""], [""], [""], [""], [""], [""], [""]];
+// const questionsForTests = [[" Натисніть на країну з назвою "], [" Натисніть на країну зі столицею "], [""], [""], [""], [""], [""], [""], [""], [""], [""], [""], [""], [""], [""], [""], [""]];
 
 const listOfCountries = [
   // Країни Світу
@@ -1216,15 +1216,28 @@ const listOfCapitals = [
   ],
 ];
 
-popupTestGeography1.querySelectorAll(".popup-body-list-point-text-info-icon").forEach((country) => {
-  country.addEventListener("mouseenter", function () {
+popupTestGeography1.querySelectorAll(".popup-body-list-point-text-info-icon").forEach((e) => {
+  e.addEventListener("mouseenter", function () {
     tool3.style.display = "block";
   });
-  country.addEventListener("mousemove", function (e) {
+  e.addEventListener("mousemove", function (e) {
     tool3.style.top = getBodyScrollTop() + 15 + e.y + "px";
     tool3.style.left = 15 + e.x + "px";
   });
-  country.addEventListener("mouseleave", function () {
+  e.addEventListener("mouseleave", function () {
+    tool3.style.display = "none";
+  });
+});
+
+popupTestGeography2.querySelectorAll(".popup-body-list-point-text-info-icon").forEach((e) => {
+  e.addEventListener("mouseenter", function () {
+    tool3.style.display = "block";
+  });
+  e.addEventListener("mousemove", function (e) {
+    tool3.style.top = getBodyScrollTop() + 15 + e.y + "px";
+    tool3.style.left = 15 + e.x + "px";
+  });
+  e.addEventListener("mouseleave", function () {
     tool3.style.display = "none";
   });
 });
@@ -1243,11 +1256,11 @@ if (sessionStorage.getItem("stageOfTest") == "finished") {
       break;
     case "1":
       finishGeographyTest2();
-      sessionStorage.removeItem("stageOfTest")
+      sessionStorage.removeItem("stageOfTest");
       break;
     case "2":
       finishGeographyTest3();
-      sessionStorage.removeItem("stageOfTest")
+      sessionStorage.removeItem("stageOfTest");
       break;
   }
 }
@@ -1259,7 +1272,26 @@ popupTestGeography1.querySelector(".popup-body[data-testStage='1'] .popup-body-b
   popupTestGeographyInfo3 = popupTestGeography1.querySelector(".popup-body-list-point-input[name='selectKnowledge']").value;
   popupTestGeographyInfo4 = popupTestGeography1.querySelector(".popup-body-list-point-input[name='inputNumberQuestions']").value;
   popupTestGeographyInfo5 = popupTestGeography1.querySelector(".popup-body-list-point-input[name='inputTimeForTest']").value;
-  document.location = `selectedTest.html?subject=${popupTestGeographyInfo0}&test=${popupTestGeographyInfo1}&r=${popupTestGeographyInfo2}&k=${popupTestGeographyInfo3}&c=${popupTestGeographyInfo4}&t=${popupTestGeographyInfo5}`;
+  // set a check for input time and number of answer
+  // have to done it
+  if (popupTestGeographyInfo5 >= 1 && popupTestGeographyInfo5 <= 60 && popupTestGeographyInfo4 >= 1 && popupTestGeographyInfo4 <= 60) {
+    document.location = `selectedTest.html?subject=${popupTestGeographyInfo0}&test=${popupTestGeographyInfo1}&r=${popupTestGeographyInfo2}&k=${popupTestGeographyInfo3}&c=${popupTestGeographyInfo4}&t=${popupTestGeographyInfo5}`;
+  }
+});
+
+popupTestGeography2.querySelector(".popup-body[data-testStage='1'] .popup-body-button").addEventListener("click", function () {
+  popupTestGeographyInfo0 = "0";
+  popupTestGeographyInfo1 = "1";
+  popupTestGeographyInfo2 = popupTestGeography2.querySelector(".popup-body-list-point-input[name='selectCountryOfTheWorld']").value;
+  popupTestGeographyInfo3 = popupTestGeography2.querySelector(".popup-body-list-point-input[name='inputNumberQuestions']").value;
+  popupTestGeographyInfo4 = popupTestGeography2.querySelector(".popup-body-list-point-input[name='inputTimeForTest']").value;
+  // set a check for input time and number of answer
+  // have to done it
+  if (popupTestGeographyInfo4 >= 1 && popupTestGeographyInfo4 <= 60 && popupTestGeographyInfo3 >= 1 && popupTestGeographyInfo3 <= 60) {
+    document.location = `selectedTest.html?subject=${popupTestGeographyInfo0}&test=${popupTestGeographyInfo1}&r=${popupTestGeographyInfo2}&c=${popupTestGeographyInfo3}&t=${popupTestGeographyInfo4}`;
+  } else {
+    console.log("wadawdaw");
+  }
 });
 
 function finishGeographyTest1() {
@@ -1276,12 +1308,48 @@ function finishGeographyTest1() {
     sessionStorage.getItem("correctedAnswers");
   popupTestGeography1.querySelector(".popup-body[data-testStage='4'] .popup-body-list-point-input[data-input='spendTime'] .popup-body-list-point-input-information").innerText =
     sessionStorage.getItem("time");
-  
+
   // Download information in BD write in "map.html"
 }
 
+function finishGeographyTest2() {
+  document.getElementById("body").classList += " popup-active";
+  document.getElementById("popupTestsInMap").className = "popup-container active";
+  popupTestGeography2.className = "popup-content active";
+  popupTestGeography2.querySelector(".popup-body[data-testStage='4']").className = "popup-body active";
+
+  popupTestGeography2.querySelector(".popup-body[data-testStage='4'] .popup-body-list-point-input[data-input='region'] .popup-body-list-point-input-information").innerText =
+    sessionStorage.getItem("region");
+  popupTestGeography2.querySelector(".popup-body[data-testStage='4'] .popup-body-list-point-input[data-input='numberQuestions'] .popup-body-list-point-input-information").innerText =
+    sessionStorage.getItem("numberOfQuestions");
+  popupTestGeography2.querySelector(".popup-body[data-testStage='4'] .popup-body-list-point-input[data-input='numberTrueAnswers'] .popup-body-list-point-input-information").innerText =
+    sessionStorage.getItem("correctedAnswers");
+  popupTestGeography2.querySelector(".popup-body[data-testStage='4'] .popup-body-list-point-input[data-input='spendTime'] .popup-body-list-point-input-information").innerText =
+    sessionStorage.getItem("time");
+}
+
 popupTestGeography1.querySelector(".popup-body[data-testStage='4'] .popup-body-button").addEventListener("click", function () {
+  document
+    .querySelector("#popupTestsInMap")
+    .querySelectorAll(" .active")
+    .forEach((e) => {
+      console.log(e.classList);
+      document.querySelector("#popupTestsInMap").querySelector("." + e.classList[0] + ".active").className = e.classList[0];
+      console.log(e.classList);
+    });
   document.getElementById("popupTestsInMap").className = "popup-container";
-  popupTestGeography1.className = "popup-content";
-  popupTestGeography1.querySelector(".popup-body[data-testStage='1']").className = "popup-body";
+  document.getElementById("body").className = "";
+});
+
+popupTestGeography2.querySelector(".popup-body[data-testStage='4'] .popup-body-button").addEventListener("click", function () {
+  document
+    .querySelector("#popupTestsInMap")
+    .querySelectorAll(" .active")
+    .forEach((e) => {
+      console.log(e.classList);
+      document.querySelector("#popupTestsInMap").querySelector("." + e.classList[0] + ".active").className = e.classList[0];
+      console.log(e.classList);
+    });
+  document.getElementById("popupTestsInMap").className = "popup-container";
+  document.getElementById("body").className = "";
 });

@@ -26,17 +26,22 @@ if (localStorage.getItem("languageId")) {
 }
 
 //console.log("awdwad languageId = " + languageId)
+if (document.getElementById("footerButtonForCallBack")) {
+    document.getElementById("footerButtonForCallBack").addEventListener("click", (e) => {
+        document.getElementById("popupCallBack").className = "popup-callback-container active";
+        body.classList = " popup-active"
+        document.querySelector("#popupCallBack .popup-callback-content").className = "popup-callback-content active";
+    })
+    
+}
 
-document.getElementById("footerButtonForCallBack").addEventListener("click", (e) => {
-    document.getElementById("popupCallBack").className = "popup-callback-container active";
-    body.classList = " popup-active"
-    document.querySelector("#popupCallBack .popup-callback-content").className = "popup-callback-content active";
-})
+if (document.getElementById("popupCallBack")) {
+    document.getElementById("popupCallBack").addEventListener("click", (e) => {
+        if (e.target.className == "popup-callback-bg" || e.target.className == "popup-callback-close") {
+            document.getElementById("popupCallBack").className = "popup-container";
+            document.querySelector("#popupCallBack .popup-callback-content.active").className = "popup-callback-content";
+            body.className = "";
+        }
+    })
+}
 
-document.getElementById("popupCallBack").addEventListener("click", (e) => {
-    if (e.target.className == "popup-callback-bg" || e.target.className == "popup-callback-close") {
-        document.getElementById("popupCallBack").className = "popup-container";
-        document.querySelector("#popupCallBack .popup-callback-content.active").className = "popup-callback-content";
-        body.className = "";
-    }
-})

@@ -47,9 +47,9 @@ if (sessionStorage.getItem("user")) {
 }
 
 if (sessionStorage.getItem("leftMenu2")) {
-    document.getElementById("leftMenu").className = "left-menu-container disactive";
-    document.getElementById("leftMenu2").className = "left-menu-container active";
-    sessionStorage.removeItem("leftMenu2")
+  document.getElementById("leftMenu").className = "left-menu-container disactive";
+  document.getElementById("leftMenu2").className = "left-menu-container active";
+  sessionStorage.removeItem("leftMenu2");
 }
 // countries.forEach((country) => {
 //     country.addEventListener("click", function () {
@@ -133,7 +133,7 @@ switches.forEach((swtch) => {
 //     }
 // })
 
-console.log(mapContainer)
+console.log(mapContainer);
 
 leftMenu1.querySelector(".left-menu-button").addEventListener("click", () => {
   if (leftMenu1.classList == "left-menu-container active") {

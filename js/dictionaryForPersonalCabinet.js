@@ -8,7 +8,11 @@ const dictionaryForFirstVersion = [
     ["Перейти до тестів"]
 ]
 
-
+const dictionaryForChangeImage = [
+    ["Змінити фото"],
+    ["Уведіть URL-адресу: "],
+    ["Завантажити фото"]
+]
 
 // const dictionaryForPersonalCabinet = [
 //     ["Особистий кабінет"],
@@ -48,7 +52,9 @@ const dictionaryForFirstVersion = [
 //     ["Навчальний заклад:"],
 //     ["Предмет:"]
 // ]
+
 const pCabinet = document.getElementById("personalCabinet");
+const popupChangeImage = document.getElementById("popupChangeImage");
 // const pCabinetPopUp = document.getElementById("popupContinueReg");
 
 pCabinet.querySelectorAll(".personal-cabinet-title")[0].innerText = dictionaryForFirstVersion[0][languageId]
@@ -68,6 +74,10 @@ pCabinet.querySelectorAll(".list-with-tests-null .list-with-tests-null-text").fo
 })
 
 pCabinet.querySelector(".list-with-tests-null-button").innerText = dictionaryForFirstVersion[6][languageId]
+
+popupChangeImage.querySelector(".popup-change-image-header-title").innerText = dictionaryForChangeImage[0][languageId]
+popupChangeImage.querySelector(".popup-change-image-text").innerText = dictionaryForChangeImage[1][languageId]
+popupChangeImage.querySelector(".popup-change-image-button").innerText = dictionaryForChangeImage[2][languageId]
 
 // let ca = 1
 // pCabinet.querySelectorAll(".personal-cabinet-button").forEach((e) => {

@@ -10,6 +10,7 @@ const dictionaryForInformationAboutTheTest = [
   ["Предмет: "],
   ["Кіл-сть правильних ответів: "],
   ["Регіон: "],
+  ["Країна: "],
   ["Кіл-сть питань: "],
   ["Вірно"],
   ["Невірно"],
@@ -18,14 +19,16 @@ const dictionaryForInformationAboutTheTest = [
   ["Відправити"],
 ];
 
-const dictionaryForContinents = [["Всесвіт"], ["Європа"], ["Азія"], ["Африка"], ["Північна Америка"], ["Південна Америка"]];
+const dictionaryForContinents = [["Всесвіт"], ["Європа"], ["Азія"], ["Африка"], ["Північна Америка"], ["Центральная Америка"], ["Південна Америка"]];
+
+const dictionaryForCountry = [["Україна"], ["Польща"], ["Чехія"]];
 
 const dictionaryForTests = [["Країна - столиця"], ["Країна - адміністративні одиниці"], ["Міжнародна організація - країни-учасниці"]];
 
 const dictionaryForSubjects = [["Географія"], ["Історія"]];
 
 const informationAboutThePerson = JSON.parse(sessionStorage.getItem("user"));
-console.log(informationAboutThePerson);
+//console.log(informationAboutThePerson);
 
 const wayToPersonalCabinet = document.getElementById("personalCabinet");
 const popupInputsWithDatalist = document.querySelectorAll(".input-datalist");
@@ -37,7 +40,18 @@ const wayToTests = document.getElementById("popupContainerForTests");
 
 let arrWithTests = [];
 
-wayToPersonalCabinet.querySelector(".personal-cabinet-photo").src = informationAboutThePerson["userPhoto"];
+console.log("test1")
+switch (Object.keys(informationAboutThePerson).includes('userNewPhoto')) {
+  case true:
+    console.log("test1 - true")
+    wayToPersonalCabinet.querySelector(".personal-cabinet-photo").src = informationAboutThePerson["userNewPhoto"];
+    break;
+  case false:
+    console.log("test1 - false")
+    wayToPersonalCabinet.querySelector(".personal-cabinet-photo").src = informationAboutThePerson["userPhoto"];
+    break;
+}
+
 wayToPersonalCabinet.querySelector(".personal-cabinet-name").innerText = informationAboutThePerson["userName"];
 
 document.getElementById("buttonToTests").addEventListener("click", () => {
@@ -47,7 +61,7 @@ document.getElementById("buttonToTests").addEventListener("click", () => {
 
 function showTests(testFromBD) {
   testFromBD.forEach((child) => {
-    console.log(child);
+    //console.log(child);
     const tempTest = child.val();
     arrWithTests = testFromBD.val();
 
@@ -97,17 +111,17 @@ function showTests(testFromBD) {
     tempDiv1.appendChild(tempDiv3);
 
     wayToLoadTests.appendChild(tempDiv1);
-    console.log(tempTest);
+    //console.log(tempTest);
   });
 }
 
 function translateTime(millisec) {
   const date12 = new Date(millisec);
 
-  console.log(millisec);
+  // console.log(millisec);
   const dayAndHours = date12.toLocaleString("sv");
 
-  console.log(date12);
+  // console.log(date12);
 
   let tempDate = date12.getDate() < 10 ? "0" + date12.getDate() : date12.getDate();
   let tempMonth = date12.getMonth() < 9 ? "0" + (date12.getMonth() + 1) : date12.getMonth() + 1;
@@ -118,12 +132,12 @@ function translateTime(millisec) {
 }
 
 function showInformationAboutTest() {
-  wayToTests.innerHTML = ""
+  wayToTests.innerHTML = "";
   document.getElementById("body").className = "popup-active";
   document.getElementById("popupInformationAboutTheTest").className = "popup-information-about-the-test-container active";
   document.querySelector(".popup-information-about-the-test-content").className = "popup-information-about-the-test-content active";
   let tempInformationAboutTest = arrWithTests[this.id];
-  console.log(tempInformationAboutTest.listWithQuestions);
+  let tempTestNumber = tempInformationAboutTest.informationAboutTest.test;
 
   document.querySelector(".popup-information-about-the-test-header-title").innerText =
     dictionaryForInformationAboutTheTest[0][languageId] + '"' + dictionaryForTests[tempInformationAboutTest.informationAboutTest.test] + '"';
@@ -134,17 +148,27 @@ function showInformationAboutTest() {
     dictionaryForInformationAboutTheTest[3][languageId] + dictionaryForSubjects[tempInformationAboutTest.informationAboutTest.subject][languageId];
   document.querySelector(".popup-information-about-the-test-information-info[data-infoAboutTheTest='trueAnswers']").innerText =
     dictionaryForInformationAboutTheTest[4][languageId] + tempInformationAboutTest.informationAboutTest.correctedAnswers;
-  document.querySelector(".popup-information-about-the-test-information-info[data-infoAboutTheTest='continent']").innerText =
-    dictionaryForInformationAboutTheTest[5][languageId] + tempInformationAboutTest.informationAboutTest.region;
+
+  switch (tempTestNumber) {
+    case "0":
+      document.querySelector(".popup-information-about-the-test-information-info[data-infoAboutTheTest='area']").innerText =
+        dictionaryForInformationAboutTheTest[5][languageId] + tempInformationAboutTest.informationAboutTest.region;
+      break;
+    case "1":
+      document.querySelector(".popup-information-about-the-test-information-info[data-infoAboutTheTest='area']").innerText =
+        dictionaryForInformationAboutTheTest[6][languageId] + tempInformationAboutTest.informationAboutTest.country;
+      break;
+  }
+
   document.querySelector(".popup-information-about-the-test-information-info[data-infoAboutTheTest='questions']").innerText =
-    dictionaryForInformationAboutTheTest[6][languageId] + tempInformationAboutTest.informationAboutTest.numberOfAnswers;
+    dictionaryForInformationAboutTheTest[7][languageId] + tempInformationAboutTest.informationAboutTest.numberOfAnswers;
 
   tempInformationAboutTest.listWithQuestions.forEach((e, index) => {
     let tempInformationAboutQuestions = e;
 
     let tempNumberOfTheQuestion = index + 1;
-    let tempCorrectly = tempInformationAboutQuestions.correctAnswer == true ? dictionaryForInformationAboutTheTest[7][languageId] : dictionaryForInformationAboutTheTest[8][languageId];
-    console.log(tempCorrectly);
+    let tempCorrectly = tempInformationAboutQuestions.correctAnswer == true ? dictionaryForInformationAboutTheTest[8][languageId] : dictionaryForInformationAboutTheTest[9][languageId];
+    //console.log(tempCorrectly);
     let tempQuestion = tempInformationAboutQuestions.questionText;
     let tempAnswer = tempInformationAboutQuestions.answer;
 
@@ -165,20 +189,28 @@ function showInformationAboutTest() {
 
     tempQuestionNumber.innerText = "№" + tempNumberOfTheQuestion;
     if (tempInformationAboutQuestions.correctAnswer) {
-      tempQuestionCorrectly.innerText = dictionaryForInformationAboutTheTest[7][languageId];
+      tempQuestionCorrectly.innerText = dictionaryForInformationAboutTheTest[8][languageId];
       tempQuestionCorrectly.classList += " correctly";
     } else {
-      tempQuestionCorrectly.innerText = dictionaryForInformationAboutTheTest[8][languageId];
+      tempQuestionCorrectly.innerText = dictionaryForInformationAboutTheTest[9][languageId];
       tempQuestionCorrectly.classList += " uncorrectly";
     }
 
-    tempQuestionQuestion.innerHTML = "<span>" + dictionaryForInformationAboutTheTest[9][languageId] + "</span>" + tempQuestion;
-    tempQuestionAnswer.innerHTML = "<span>" + dictionaryForInformationAboutTheTest[10][languageId] + "</span>" + tempAnswer;
+    tempQuestionQuestion.innerHTML = "<span>" + dictionaryForInformationAboutTheTest[10][languageId] + "</span>" + tempQuestion;
+    tempQuestionAnswer.innerHTML = "<span>" + dictionaryForInformationAboutTheTest[11][languageId] + "</span>" + tempAnswer;
     tempQuestionNumberAndCorrectly.appendChild(tempQuestionNumber);
     tempQuestionNumberAndCorrectly.appendChild(tempQuestionCorrectly);
 
     tempQuestionQuestionAndAnswer.appendChild(tempQuestionQuestion);
-    tempQuestionQuestionAndAnswer.appendChild(tempQuestionAnswer);
+
+    switch (tempTestNumber) {
+      case "0":
+        tempQuestionQuestionAndAnswer.appendChild(tempQuestionAnswer);
+        break;
+      case "1":
+        //
+        break;
+    }
 
     tempQuestionContent.appendChild(tempQuestionNumberAndCorrectly);
     tempQuestionContent.appendChild(tempQuestionQuestionAndAnswer);
@@ -186,6 +218,11 @@ function showInformationAboutTest() {
     wayToTests.appendChild(tempQuestionContent);
   });
 }
+
+document.getElementById("changePhoto").addEventListener("click", (e) => {
+  document.getElementById("body").className = "body popup-active";
+  document.getElementById("popupChangeImage").className = "popup-change-image-container active";
+});
 
 document.getElementById("popupInformationAboutTheTest").addEventListener("click", (e) => {
   if (
@@ -196,6 +233,13 @@ document.getElementById("popupInformationAboutTheTest").addEventListener("click"
     document.getElementById("popupInformationAboutTheTest").className = "popup-information-about-the-test-container";
     document.querySelector(".popup-information-about-the-test-content.active").className = "popup-information-about-the-test-content";
     document.getElementById("body").className = "body";
+  }
+});
+
+document.getElementById("popupChangeImage").addEventListener("click", (e) => {
+  if (e.target.className == "popup-change-image-bg" || e.target.className == "popup-change-image-close") {
+    document.getElementById("popupChangeImage").className = "popup-change-image-container";
+    body.className = "";
   }
 });
 

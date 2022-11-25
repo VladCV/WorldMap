@@ -92,8 +92,12 @@ document.querySelectorAll(".left-menu-test-button").forEach((e) => {
 
 document.getElementById("popupTestsInMap").addEventListener("click", (e) => {
     if (e.target.className == "popup-bg" || e.target.className == "popup-close") {
+        document.querySelector("#popupTestsInMap").querySelectorAll(" .active").forEach((e) => {
+            console.log(e.classList)
+            document.querySelector("#popupTestsInMap").querySelector("." + e.classList[0] + ".active").className = e.classList[0]
+            console.log(e.classList)
+        })
         document.getElementById("popupTestsInMap").className = "popup-container";
-        document.querySelector("#popupTestsInMap .popup-content.active").className = "popup-content";
         document.getElementById("body").className = "";
     }
 })
