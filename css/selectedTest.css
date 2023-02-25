@@ -180,7 +180,7 @@
   position: fixed;
   top: 0;
   display: none;
-  z-index: 999;
+  z-index: 99;
 }
 
 .popup-container.active {

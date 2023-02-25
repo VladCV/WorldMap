@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +7,136 @@
   scroll-behavior: smooth;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+.preloader {
+  display: block;
+}
+
+.preloader.disactive {
+  display: none;
+}
+
+.preloader .preloader-container {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #030239;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.preloader .preloader-container .preloader-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.preloader .preloader-container .preloader-content .preloader-dots-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 40px;
+}
+
+.preloader .preloader-container .preloader-content .preloader-dots-container .preloader-dot {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  margin-right: 16px;
+  display: block;
+  -webkit-transform: scale(0.4);
+      -ms-transform: scale(0.4);
+          transform: scale(0.4);
+  background-color: rgba(255, 255, 255, 0.7);
+  -webkit-animation: preloader 2s ease-in-out infinite;
+          animation: preloader 2s ease-in-out infinite;
+}
+
+.preloader .preloader-container .preloader-content .preloader-dots-container .preloader-dot:last-child {
+  margin: 0;
+}
+
+.preloader .preloader-container .preloader-content .preloader-dots-container .preloader-dot:nth-child(1) {
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+
+.preloader .preloader-container .preloader-content .preloader-dots-container .preloader-dot:nth-child(2) {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+
+.preloader .preloader-container .preloader-content .preloader-dots-container .preloader-dot:nth-child(3) {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+
+.preloader .preloader-container .preloader-content .preloader-dots-container .preloader-dot:nth-child(4) {
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+
+.preloader .preloader-container .preloader-content .preloader-text {
+  color: #fff;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+@-webkit-keyframes preloader {
+  0% {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    background-color: #fff;
+  }
+
+  100% {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+@keyframes preloader {
+  0% {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    background-color: #fff;
+  }
+
+  100% {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+    background-color: rgba(255, 255, 255, 0.7);
+  }
 }
 
 body {
@@ -136,14 +264,6 @@ button {
   font-size: 14px;
 }
 
-.header .header-container .header-buttons .button-container .header-button[data-type=language] {
-  display: block;
-}
-
-.header .header-container .header-buttons .button-container .header-button[data-type=language]::after {
-  content: url("../img/Стрелка вниз.svg");
-}
-
 .header .header-container .header-buttons .button-container .button-dropdown-content {
   width: 100%;
   bottom: -40px;
@@ -159,7 +279,7 @@ button {
   background-color: #000;
   position: absolute;
   width: 100%;
-  z-index: 10;
+  z-index: 4;
 }
 
 .footer .footer-container {
@@ -252,7 +372,7 @@ button {
   position: fixed;
   top: 0;
   display: none;
-  z-index: 999;
+  z-index: 99;
 }
 
 .popup-callback-container.active {
@@ -418,4 +538,208 @@ button {
   cursor: pointer;
   background: -o-linear-gradient(349.99deg, #bae9ff 20.54%, #a3e3ff 61.75%);
   background: linear-gradient(100.01deg, #bae9ff 20.54%, #a3e3ff 61.75%);
+}
+
+.popup-change-language-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  display: none;
+  z-index: 99;
+}
+
+.popup-change-language-container.active {
+  display: block;
+}
+
+.popup-change-language-container .popup-change-language-bg {
+  position: absolute;
+  display: block;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content {
+  border-radius: 10px;
+  position: relative;
+  display: none;
+  max-height: 560px;
+  width: 970px;
+  padding: 50px 100px;
+  margin: auto;
+  margin-top: 104px;
+  background-color: #fff;
+}
+
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content.active {
+  display: block;
+}
+
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content .popup-change-language-close {
+  display: block;
+  position: relative;
+  left: -130px;
+}
+
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content .popup-change-language-close:hover {
+  cursor: pointer;
+}
+
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content .popup-change-language-close::after {
+  content: "";
+  right: -120px;
+  top: 10px;
+  position: absolute;
+  width: 23px;
+  height: 1.5px;
+  background: #000;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content .popup-change-language-close::before {
+  content: "";
+  right: -120px;
+  top: 10px;
+  position: absolute;
+  width: 23px;
+  height: 1.5px;
+  background: #000;
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content .popup-change-language-header {
+  text-align: center;
+}
+
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content .popup-change-language-header .popup-change-language-header-title {
+  font-weight: 500;
+  font-size: 24px;
+  position: relative;
+}
+
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content .popup-change-language-header .popup-change-language-header-title::before {
+  position: absolute;
+  left: -50px;
+  top: -3px;
+}
+
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content .popup-change-language-body .popup-change-language-url-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 40px;
+}
+
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content .popup-change-language-body .popup-change-language-url-container .popup-change-language-text {
+  font-weight: 400;
+  margin-right: 20px;
+  font-size: 18px;
+}
+
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content .popup-change-language-body .popup-change-language-url-container .popup-change-language-input-container {
+  width: 100%;
+  max-width: 500px;
+}
+
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content .popup-change-language-body .popup-change-language-url-container .popup-change-language-input-container .popup-change-language-input {
+  width: 100%;
+  height: 46px;
+  border: none;
+  background: #f0f0f0;
+  border-bottom: 2px solid #e1e1e1;
+  border-radius: 10px;
+  padding: 0 10px;
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content .popup-change-language-body .popup-change-language-url-container .popup-change-language-input-container .popup-change-language-input:focus,
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content .popup-change-language-body .popup-change-language-url-container .popup-change-language-input-container .popup-change-language-input:active {
+  outline: none;
+  border-bottom: 2px solid #afafaf;
+}
+
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content .popup-change-language-body .popup-change-language-url-container .popup-change-language-input-container .popup-change-language-datalist {
+  position: absolute;
+  background: #f0f0f0;
+  border: 1px solid #e1e1e1;
+  border-radius: 0 0 5px 5px;
+  border-top: none;
+  font-family: sans-serif;
+  width: 100%;
+  max-width: 500px;
+  padding: 5px;
+  max-height: 10rem;
+  overflow-y: auto;
+}
+
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content .popup-change-language-body .popup-change-language-url-container .popup-change-language-input-container .popup-change-language-datalist .popup-change-language-option {
+  background: #f0f0f0;
+  padding: 2px;
+  color: #1e1e1e;
+  margin-bottom: 1px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content .popup-change-language-body .popup-change-language-url-container .popup-change-language-input-container .popup-change-language-datalist .popup-change-language-option:hover,
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content .popup-change-language-body .popup-change-language-url-container .popup-change-language-input-container .popup-change-language-datalist .popup-change-language-option:active {
+  color: black;
+  background-color: lightblue;
+}
+
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content .popup-change-language-button {
+  background: -o-linear-gradient(349.99deg, #d5f2ff 20.54%, #bdebff 61.75%);
+  background: linear-gradient(100.01deg, #d5f2ff 20.54%, #bdebff 61.75%);
+  -webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.2);
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px;
+  width: 380px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 24px;
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border: none;
+}
+
+.popup-change-language-container .popup-change-language-bg .popup-change-language-content .popup-change-language-button:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.4);
+          box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.4);
 }

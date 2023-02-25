@@ -742,7 +742,7 @@ img {
 .tooltip3 {
   display: none;
   position: absolute;
-  z-index: 100;
+  z-index: 10;
   top: 0;
   left: 0;
   padding: 10px;
@@ -755,7 +755,7 @@ img {
 .tooltip3 {
   display: none;
   position: absolute;
-  z-index: 100;
+  z-index: 10;
   top: 0;
   left: 0;
   padding: 10px;
