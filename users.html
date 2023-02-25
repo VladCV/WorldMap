@@ -14,9 +14,13 @@
   <div class="page-container">
     <div class="header-container">
       <div class="header-logo">
-        <a href="index.html">
-          <img src="img/Explore Logo3.svg" alt="logo" />
+        <a href="index.html" style="display: flex; align-items: center">
+          <img src="img/Explore Logo3.svg" alt="logo" style="margin-right: 20px;"/>
+          <p style="color: white; font-size: 28px">Explore the World</p>
         </a>
+        <!-- <a href="index.html">
+          <img src="img/Explore Logo3.svg" alt="logo" />
+        </a> -->
       </div>
       <nav class="header-nav">
         <ul class="nav-list">
@@ -32,42 +36,51 @@
         </ul>
       </nav>
       <div class="header-buttons">
-        <div class="button-container active" id="button-language">
+        <div class="button-container active" id="buttonLanguage">
           <img src="img/Иконка языка.svg" alt="icon" class="button-icon" />
-          <span class="header-button" data-type="language"> Українська </span>
-          <div class="button-dropdown-content">
-            <span>Русский</span>
-            <span>Украинский</span>
-          </div>
+          <span class="header-button" data-type="language" id="buttonLanguageText"></span>
         </div>
         <div class="button-container active" id="buttonSignIn">
-          <img
-            src="img/Иконка авторизации.svg"
-            alt="icon"
-            class="button-icon"
-          />
+          <img src="img/Иконка авторизации.svg" alt="icon" class="button-icon" />
           <button class="header-button" data-type="signIn"></button>
         </div>
         <div class="button-container" id="buttonCabinet">
-          <img
-            src="img/Иконка авторизации.svg"
-            alt="icon"
-            class="button-icon"
-          />
+          <img src="img/Иконка авторизации.svg" alt="icon" class="button-icon" />
           <button class="header-button" data-type="cabinet"></button>
         </div>
         <div class="button-container" id="buttonSignOut">
-          <img
-            src="img/Иконка авторизации.svg"
-            alt="icon"
-            class="button-icon"
-          />
+          <img src="img/Иконка авторизации.svg" alt="icon" class="button-icon" />
           <button class="header-button" data-type="signOut"></button>
         </div>
       </div>
     </div>
   </div>
 </header>
+
+<div class="popup-change-language-container" id="popupChangeLanguage">
+  <div class="popup-change-language-bg">
+    <div class="popup-change-language-content">
+      <div class="popup-change-language-close"></div>
+      <div class="popup-change-language-header">
+        <span class="popup-change-language-header-title">Оберіть мову</span>
+      </div>
+      <div class="popup-change-language-body">
+        <div class="popup-change-language-url-container" id="popupChangeLanguageContainer">
+          <p class="popup-change-language-text">Оберіть мову для сайта:</p>
+          <div class="popup-change-language-input-container">
+            <input type="text" class="popup-change-language-input" value="" list="" id="popupChangeLanguageInput" />
+            <datalist class="popup-change-language-datalist" id="popupChangeLanguageDatalist">
+              <option class="popup-change-language-option" value="Українська" data-languageCode="ua">Українська</option>
+              <option class="popup-change-language-option" value="English" data-languageCode="en">English</option>
+            </datalist>
+          </div>
+        </div>
+      </div>
+      <button class="popup-change-language-button" id="popupChangeLanguageButton">Зберегти</button>
+    </div>
+  </div>
+</div>
+
 
 
     <div class="page-container min-width">

@@ -10,13 +10,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   </head>
   <body id="body" data-page="personalCabinet">
+    <div class="preloader" id="preloader">
+  <div class="preloader-container">
+    <div class="preloader-content">
+      <div class="preloader-dots-container">
+        <div class="preloader-dot"></div>
+        <div class="preloader-dot"></div>
+        <div class="preloader-dot active"></div>
+        <div class="preloader-dot"></div>
+      </div>
+      <div class="preloader-text">Сторінка завантажується...</div>
+    </div>
+  </div>
+</div>
+
     <header class="header" id="header">
   <div class="page-container">
     <div class="header-container">
       <div class="header-logo">
-        <a href="index.html">
-          <img src="img/Explore Logo3.svg" alt="logo" />
+        <a href="index.html" style="display: flex; align-items: center">
+          <img src="img/Explore Logo3.svg" alt="logo" style="margin-right: 20px;"/>
+          <p style="color: white; font-size: 28px">Explore the World</p>
         </a>
+        <!-- <a href="index.html">
+          <img src="img/Explore Logo3.svg" alt="logo" />
+        </a> -->
       </div>
       <nav class="header-nav">
         <ul class="nav-list">
@@ -32,42 +50,51 @@
         </ul>
       </nav>
       <div class="header-buttons">
-        <div class="button-container active" id="button-language">
+        <div class="button-container active" id="buttonLanguage">
           <img src="img/Иконка языка.svg" alt="icon" class="button-icon" />
-          <span class="header-button" data-type="language"> Українська </span>
-          <div class="button-dropdown-content">
-            <span>Русский</span>
-            <span>Украинский</span>
-          </div>
+          <span class="header-button" data-type="language" id="buttonLanguageText"></span>
         </div>
         <div class="button-container active" id="buttonSignIn">
-          <img
-            src="img/Иконка авторизации.svg"
-            alt="icon"
-            class="button-icon"
-          />
+          <img src="img/Иконка авторизации.svg" alt="icon" class="button-icon" />
           <button class="header-button" data-type="signIn"></button>
         </div>
         <div class="button-container" id="buttonCabinet">
-          <img
-            src="img/Иконка авторизации.svg"
-            alt="icon"
-            class="button-icon"
-          />
+          <img src="img/Иконка авторизации.svg" alt="icon" class="button-icon" />
           <button class="header-button" data-type="cabinet"></button>
         </div>
         <div class="button-container" id="buttonSignOut">
-          <img
-            src="img/Иконка авторизации.svg"
-            alt="icon"
-            class="button-icon"
-          />
+          <img src="img/Иконка авторизации.svg" alt="icon" class="button-icon" />
           <button class="header-button" data-type="signOut"></button>
         </div>
       </div>
     </div>
   </div>
 </header>
+
+<div class="popup-change-language-container" id="popupChangeLanguage">
+  <div class="popup-change-language-bg">
+    <div class="popup-change-language-content">
+      <div class="popup-change-language-close"></div>
+      <div class="popup-change-language-header">
+        <span class="popup-change-language-header-title">Оберіть мову</span>
+      </div>
+      <div class="popup-change-language-body">
+        <div class="popup-change-language-url-container" id="popupChangeLanguageContainer">
+          <p class="popup-change-language-text">Оберіть мову для сайта:</p>
+          <div class="popup-change-language-input-container">
+            <input type="text" class="popup-change-language-input" value="" list="" id="popupChangeLanguageInput" />
+            <datalist class="popup-change-language-datalist" id="popupChangeLanguageDatalist">
+              <option class="popup-change-language-option" value="Українська" data-languageCode="ua">Українська</option>
+              <option class="popup-change-language-option" value="English" data-languageCode="en">English</option>
+            </datalist>
+          </div>
+        </div>
+      </div>
+      <button class="popup-change-language-button" id="popupChangeLanguageButton">Зберегти</button>
+    </div>
+  </div>
+</div>
+
 
 
     <div class="page-container min-width">
@@ -99,7 +126,26 @@
                 <p class="list-with-tests-null-text"></p>
                 <button class="list-with-tests-null-button" id="buttonToTests"></button>
               </div>
-              <div class="list-with-tests-sorts"></div>
+              <div class="list-with-tests-sort">
+                <div class="list-with-tests-sort-points">
+                  <div class="list-with-tests-sort-point active">
+                    <p class="list-with-tests-sort-point-text"></p>
+                  </div>
+                  <div class="list-with-tests-sort-point disactive">
+                    <p class="list-with-tests-sort-point-text"></p>
+                  </div>
+                  <div class="list-with-tests-sort-point disactive">
+                    <p class="list-with-tests-sort-point-text"></p>
+                  </div>
+                </div>
+                <!-- Remove 'disactive' after competition and rewrite heigth for list-with-tests-sort and list-with-tests-container. 
+                  In developing  -->
+                <div class="list-with-tests-sort-container disactive">
+                  <button class="list-with-tests-sort-button" id="buttonToSortTests">
+                    <span class="list-with-tests-sort-button-main-text"></span> <span class="list-with-tests-sort-button-text"></span>
+                  </button>
+                </div>
+              </div>
               <div class="list-with-tests-tests" id="listWithTests">
                 <!-- <div class="test-container">
                   <div class="test-subject-and-date">
@@ -175,7 +221,29 @@
     </div>
   </div>
 </div>
- <div class="popup-container" id="popupContinueReg">
+ <div class="popup-sort-container" id="popupSort">
+    <div class="popup-sort-bg">
+      <div class="popup-sort-content active">
+        <div class="popup-sort-close"></div>
+        <div class="popup-sort-header">
+          <span class="popup-sort-header-title"></span>
+        </div>
+        <div class="popup-sort-body">
+          <div class="popup-sort-url-container" id="popupSortContainer">
+              <p class="popup-sort-text">Сортування:</p>
+              <select type="text" class="popup-sort-input" id="popupSortList">
+                <option class="popup-sort-option" value="0"></option>
+                <option class="popup-sort-option" value="1"></option>
+                <option class="popup-sort-option" value="2"></option>
+                <option class="popup-sort-option" value="3"></option>
+              </select>
+          </div>
+        </div>
+        <button class="popup-sort-button" id="popupSortButton">Застосувати</button>
+      </div>
+    </div>
+  </div>
+   <div class="popup-container" id="popupContinueReg">
   <div class="popup-bg" id="popupContinueRegBg">
     <div class="popup-content active" data-stage="1">
       <div class="popup-close"></div>
@@ -386,7 +454,7 @@
 
     import { getAuth, signInWithPopup, signInWithRedirect, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-    import { getDatabase, ref, set, get, child, update, remove } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+    import { getDatabase, ref, set, get, child, update, remove, query, orderByChild } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCd1ey19rgxuiGoe3s1fgwAXBor2u6ZQ6c",
@@ -419,6 +487,24 @@
         console.log(error);
       });
 
+    // let topUserPostsRef = query(child(databaseRef, "users/historyOfTests/HvMmHB6hgDXhNi1f9O5I9pelu743/-NHWKMs8AP-Wuj8VfXsj/listWithQuestions"), orderByChild("correctAnswer"));
+
+    // console.log(topUserPostsRef);
+
+    // let tempGetWay = query(child(databaseRef, `users/historyOfTests/${userId}`), orderByChild("numberOfAnswers"));
+
+    // get(texmpGetWay)
+    //   .then((snapshot) => {
+    //     console.log(snapshot);
+    //     snapshot.forEach((child) => {
+    //       console.log(child.val());
+    //     });
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+    // console.log(topUserPostsRef);
+
     document.getElementById("popupChangeImageButton").addEventListener("click", (e) => {
       let tempUrl = document.getElementById("popupChangeImageContainer").querySelector(".popup-change-image-input").value;
 
@@ -432,7 +518,7 @@
         "i"
       ); // fragment locator
       if (pattern.test(tempUrl)) {
-        document.getElementById("popupChangeImageContainer").querySelector(".popup-change-image-input").style.color = "black"
+        document.getElementById("popupChangeImageContainer").querySelector(".popup-change-image-input").style.color = "black";
         update(child(databaseRef, `users/informationAboutUsers/${userId}`), {
           userNewPhoto: tempUrl,
         });
@@ -440,7 +526,7 @@
         body.className = "";
         document.getElementById("popupChangeImageContainer").querySelector(".popup-change-image-input").value = "";
       } else {
-        document.getElementById("popupChangeImageContainer").querySelector(".popup-change-image-input").style.color = "red"
+        document.getElementById("popupChangeImageContainer").querySelector(".popup-change-image-input").style.color = "red";
       }
     });
 
