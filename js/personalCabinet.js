@@ -39,15 +39,16 @@ const wayToLoadTests = document.getElementById("listWithTests");
 const wayToTests = document.getElementById("popupContainerForTests");
 
 let arrWithTests = [];
+let tempSort = "";
 
-console.log("test1")
-switch (Object.keys(informationAboutThePerson).includes('userNewPhoto')) {
+console.log("test1");
+switch (Object.keys(informationAboutThePerson).includes("userNewPhoto")) {
   case true:
-    console.log("test1 - true")
+    console.log("test1 - true");
     wayToPersonalCabinet.querySelector(".personal-cabinet-photo").src = informationAboutThePerson["userNewPhoto"];
     break;
   case false:
-    console.log("test1 - false")
+    console.log("test1 - false");
     wayToPersonalCabinet.querySelector(".personal-cabinet-photo").src = informationAboutThePerson["userPhoto"];
     break;
 }
@@ -113,6 +114,7 @@ function showTests(testFromBD) {
     wayToLoadTests.appendChild(tempDiv1);
     //console.log(tempTest);
   });
+  finishPreloader();
 }
 
 function translateTime(millisec) {
@@ -137,6 +139,7 @@ function showInformationAboutTest() {
   document.getElementById("popupInformationAboutTheTest").className = "popup-information-about-the-test-container active";
   document.querySelector(".popup-information-about-the-test-content").className = "popup-information-about-the-test-content active";
   let tempInformationAboutTest = arrWithTests[this.id];
+  console.log(tempInformationAboutTest)
   let tempTestNumber = tempInformationAboutTest.informationAboutTest.test;
 
   document.querySelector(".popup-information-about-the-test-header-title").innerText =
@@ -222,6 +225,7 @@ function showInformationAboutTest() {
 document.getElementById("changePhoto").addEventListener("click", (e) => {
   document.getElementById("body").className = "body popup-active";
   document.getElementById("popupChangeImage").className = "popup-change-image-container active";
+  document.querySelector(".popup-change-image-content").className = "popup-change-image-content active";
 });
 
 document.getElementById("popupInformationAboutTheTest").addEventListener("click", (e) => {
@@ -230,8 +234,8 @@ document.getElementById("popupInformationAboutTheTest").addEventListener("click"
     e.target.className == "popup-information-about-the-test-close" ||
     e.target.className == "popup-information-about-the-test-button"
   ) {
-    document.getElementById("popupInformationAboutTheTest").className = "popup-information-about-the-test-container";
-    document.querySelector(".popup-information-about-the-test-content.active").className = "popup-information-about-the-test-content";
+    document.getElementById("popupSort").className = "popup-sort-container";
+    document.querySelector(".popup-information-about-the-test-container.active").className = "popup-information-about-the-test-container";
     document.getElementById("body").className = "body";
   }
 });
@@ -241,6 +245,44 @@ document.getElementById("popupChangeImage").addEventListener("click", (e) => {
     document.getElementById("popupChangeImage").className = "popup-change-image-container";
     body.className = "";
   }
+});
+
+document.getElementById("buttonToSortTests").addEventListener("click", (e) => {
+  document.getElementById("body").className = "body popup-active";
+  document.getElementById("popupSort").className = "popup-sort-container active";
+});
+
+document.getElementById("popupSort").addEventListener("click", (e) => {
+  if (e.target.className == "popup-sort-bg" || e.target.className == "popup-sort-close" || e.target.className == "popup-sort-button") {
+    document.getElementById("popupSort").className = "popup-sort-container";
+    document.getElementById("body").className = "body";
+  }
+});
+
+document.getElementById("popupSortButton").addEventListener("click", (e) => {
+  let tempSelect = document.getElementById("popupSortList");
+  let tempSelectValue = tempSelect.value;
+  let tempSelectText = tempSelect.options[tempSelect.selectedIndex].text;
+  document.getElementById("personalCabinet").querySelector(".list-with-tests-sort .list-with-tests-sort-button-text").innerText = tempSelectText;
+  switch (tempSelectValue) {
+    case "0":
+      orderTestsFromBD(0)
+      break;
+    case "1":
+      orderTestsFromBD(1)
+      break;
+    case "2":
+      orderTestsFromBD(2)
+      break;
+    case "3":
+      orderTestsFromBD(3)
+      break;
+  }
+
+  function orderTestsFromBD(x){
+    console.log("//")
+  }
+  console.log(tempSelectValue, tempSelectText);
 });
 
 // document.getElementById("buttonSignOut").setAttribute("style", "display:flex");

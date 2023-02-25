@@ -78,6 +78,10 @@ countries.forEach((country) => {
     });
 });
 
+document.addEventListener("load", (e) => {
+    console.log("start")
+})
+
 document.querySelectorAll(".left-menu-test-button").forEach((e) => {
     e.addEventListener("click", () => {
         if (document.querySelector("#popupTestsInMap .popup-content[data-test=" + e.dataset.test + "]")) {

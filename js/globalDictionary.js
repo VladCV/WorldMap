@@ -1,31 +1,29 @@
-const libraryForTheHeader = [["Головна"], ["Мапа"], ["Про платформу"], ["Авторизація"], ["Особистий кабінет"], ["Вийти"]];
+const libraryForTheHeader = [["Головна", "Main"], ["Мапа", "Map"], ["Про сайт", "About the site"], ["Авторизація", "Authorization"], ["Особистий кабінет", "Personal cabinet"], ["Вийти", "Log out"]];
 
 const libraryForTheFooter = [
-  ["Користувачі"],
-  ["О нас"],
-  ["FAQ"],
+  ["Користувачі", "Users"],
+  ["О нас", "About us"],
+  ["FAQ", "FAQ"],
 
-  ["Неавторизовані"],
-  ["Авторизовані"],
+  ["Неавторизовані", "Not authorized"],
+  ["Авторизовані", "Authorized"],
   //["Учні"],
   //["Вчителі"],
 
-  ["Про платформу"],
+  ["Про платформу", "About the site"],
   //["Стати партнером"],
 
-  ["Часто поставлені питання"],
+  ["Часто поставлені питання", "Frequently asked questions"],
 
-  ["<span>Побачили</span> якусь неточність у даних?"],
-  ["<span>Напишіть</span> нам про це, і ми все виправимо"],
-  ["Написати"],
+  ["<span>Побачили</span> якусь неточність у даних?", "<span>See</span> any inaccuracy in the data?"],
+  ["<span>Напишіть</span> нам про це, і ми все виправимо", "<span>Email</span> us about it and we'll fix it"],
+  ["Написати", "Send"],
 
-  ["Зворотній зв'язок"],
-  ["Ім'я Прізвище"],
-  ["Опис проблеми"],
-  ["Надіслати"],
+  ["Зворотній зв'язок", "Feedback"],
+  ["Ім'я Прізвище", "Name"],
+  ["Опис проблеми", "Description of the problem"],
+  ["Надіслати", "Send"],
 ];
-
-//let languageId = localStorage.getItem("languageId");
 
 console.log("languageId = " + languageId);
 

@@ -1,6 +1,6 @@
 const dictionaryForSelectedTest = [[""]];
 
-const dictionaryForContinueOfGeographyTest1 = [["Правильних відповідей: "], ["Завершити тестування"], [""]];
+const dictionaryForContinueOfGeographyTest1 = [["Правильних відповідей: ", "Correct answers: "], ["Завершити тестування", "Complete testing"], [""]];
 
 const wayToActivatedTest = document.querySelector(".activated-test[data-test='g1']");
 

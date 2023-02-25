@@ -19,6 +19,7 @@ function setGlobalInformation(leng, snap) {
       countries[i].dataset.internationalorganizations = snap.val()[temp_id][2];
     }
   }
+  finishPreloader(); // Firebase is loaded -> Page is loaded -> Preloader is finished
 }
 
 function setInformationAboutGeography(snap) {
